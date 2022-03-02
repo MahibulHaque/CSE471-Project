@@ -1,7 +1,5 @@
 import { Container, Logo, NavLinks, NavButtons } from "./NavbarElements";
-import {Button} from '@material-ui/core'
 import Link from "next/link";
-
 
 const Navbar = () => {
   return (
@@ -16,8 +14,16 @@ const Navbar = () => {
           <NavLinks>Contact Us</NavLinks>
         </div>
         <div>
-        <NavButtons variant="text" color="primary">Login</NavButtons>
-        <NavButtons variant="contained">Register</NavButtons>
+          <Link href="/login">
+            <NavButtons variant="outlined" color="primary">
+              Sign in
+            </NavButtons>
+          </Link>
+          <Link href="/register">
+            <NavButtons variant="contained"  style={{ marginLeft: "1.5rem" }}>
+              Register
+            </NavButtons>
+          </Link>
         </div>
       </Container>
     </>

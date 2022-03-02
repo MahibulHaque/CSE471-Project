@@ -18,6 +18,7 @@ const theme = {
     black: "#000",
     white: "#fff",
   },
+
 };
 
 export default function App({ Component, pageProps }) {

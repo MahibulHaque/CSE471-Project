@@ -1,4 +1,4 @@
-import { Button,styled as MuiStyled } from "@material-ui/core";
+import { Button,styled as styledMui } from "@material-ui/core";
 import styled from "styled-components";
 
 export const Container = styled.nav`
@@ -7,7 +7,6 @@ export const Container = styled.nav`
     display:flex;
     align-items:center;
     justify-content:space-evenly;
-    background-color:${({theme})=>theme.colors.black};
     color:${({theme})=>theme.colors.white};
     
 `
@@ -18,9 +17,9 @@ export const Logo = styled.img`
 `
 
 export const NavLinks = styled.a`
-    margin-right:1rem;
+    margin-right:1.5rem;
     cursor: pointer;
 `
-export const NavButtons = MuiStyled(Button)`
-    padding-right:2rem;
+export const NavButtons = styled(Button)`
+    
 `

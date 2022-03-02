@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
+import HomeScreen from "../components/HomeScreen";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 
@@ -14,9 +15,18 @@ export default function Home() {
 
       </Head>
 
-      <main>
+      <Main>
         <Navbar />
-      </main>
+        <HomeScreen/>
+      </Main>
     </div>
   );
 }
+
+const Main = styled.main`
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  background-color: #1F1F1F;
+  min-height:100vh;
+`

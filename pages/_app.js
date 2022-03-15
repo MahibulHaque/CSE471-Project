@@ -1,5 +1,5 @@
-import Head from "next/head";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { SessionProvider } from "next-auth/react";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -18,16 +18,17 @@ const theme = {
     black: "#000",
     white: "#fff",
   },
-
 };
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component, pageProps:{ session, ...pageProps } }) {
   return (
     <>
       <GlobalStyle />
 
       <ThemeProvider theme={theme}>
-        <Component {...pageProps} />
+        <SessionProvider session={session}>
+          <Component {...pageProps} />
+        </SessionProvider>
       </ThemeProvider>
     </>
   );

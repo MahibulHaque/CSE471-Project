@@ -7,11 +7,9 @@ export const Container = styled.div`
   max-width:1400px;
   display: grid;
   grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
   place-items:center;
   grid-gap:5em;
+  margin-block:5em;
 `;
 export const TextContainer = styled.div`
   display: flex;
@@ -20,7 +18,7 @@ export const TextContainer = styled.div`
   max-width:400px;
 `;
 export const HomeHeaderTag = styled.h1`
-  font-size: clamp(40px, 6vw, 60px);
+  font-size: clamp(40px, 6vw, 65px);
   font-weight:800;
   color:white;
   margin-bottom:-.5rem;

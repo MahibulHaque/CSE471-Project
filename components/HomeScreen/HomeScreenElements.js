@@ -79,8 +79,10 @@ export const ButtonContainer = styled.div`
 export const Buttons = styled.button`
   background-color:#171717;
   flex-grow:1;
-
-  padding-block:.5em;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding-block:.75em;
   cursor: pointer;
   outline:none;
   border:1px solid #262626;

@@ -19,7 +19,48 @@ export const Logo = styled.img`
 export const NavLinks = styled.a`
     margin-right:1.5rem;
     cursor: pointer;
+    font-size:18px;
+    color:#d4d4d4;
+    &:hover{
+        color:white;
+    }
 `
 export const NavButtons = styled(Button)`
     
+`
+
+export const NavbarDashContainer = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+`
+export const DashboardButton = styled.button`
+    cursor: pointer;
+    border:none;
+    border-radius:.25rem;
+    outline:none;
+    background-color:#707070;
+    padding-inline:1.5rem;
+    padding-block:.75rem;
+    margin-right:1.5rem;
+    color:white;
+    font-size:18px;
+    &:hover{
+        background-color:#404040;
+    }
+`
+
+export const NotificationButton = styled.div`
+    width:2rem;
+    height:2rem;
+    border-radius:.25em;
+    background-color:#191919;
+    padding:.5rem;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-right:1.5rem;
+    &:hover{
+        background-color:#404040;
+    }
 `

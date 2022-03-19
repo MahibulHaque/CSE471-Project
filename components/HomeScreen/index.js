@@ -54,7 +54,7 @@ const HomeScreen = () => {
         <FormContainer>
           <FormHeader>Sign up with</FormHeader>
           <ButtonContainer>
-            <Buttons style={{ marginRight: "1rem" }}onClick={()=>signIn("google")}>
+            <Buttons style={{ marginRight: "1rem" }}onClick={()=>signIn('google')}>
               <FaGoogle
                 style={{ fill: "#D4D4D4", width: "22px", height: "auto" }}
               />

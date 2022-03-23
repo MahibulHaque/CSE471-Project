@@ -156,3 +156,23 @@ export const SubmitButton = styled.button`
       background-color:#4338CA;
   }
 `
+
+export const StrengthIndicator = styled.div`
+
+  height:8px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:10px;
+
+  &>span{
+    width:100%;
+    height:100%;
+    background-color:lightgray;
+    border-radius:5px;
+  }
+  & .medium{
+
+    margin:0 3px;
+  }
+`

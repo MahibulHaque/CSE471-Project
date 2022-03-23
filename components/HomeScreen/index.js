@@ -16,11 +16,14 @@ import {
   TextContainer,
   Form,
   SubmitButton,
+  StrengthIndicator,
 } from "./HomeScreenElements";
-import { ErrorMessage, Formik } from "formik";
+import { Formik } from "formik";
 import * as Yup from "yup";
 
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import zxcvbn from "zxcvbn";
+import axios from "axios";
 
 const HomeScreen = () => {
   const validationSchema = Yup.object().shape({
@@ -54,13 +57,16 @@ const HomeScreen = () => {
         <FormContainer>
           <FormHeader>Sign up with</FormHeader>
           <ButtonContainer>
-            <Buttons style={{ marginRight: "1rem" }}onClick={()=>signIn('google')}>
+            <Buttons
+              style={{ marginRight: "1rem" }}
+              onClick={() => signIn("google")}
+            >
               <FaGoogle
                 style={{ fill: "#D4D4D4", width: "22px", height: "auto" }}
               />
             </Buttons>
 
-            <Buttons onClick={()=>signIn("github")}>
+            <Buttons onClick={() => signIn("github")}>
               <FaGithub
                 style={{ fill: "#D4D4D4", width: "22px", height: "auto" }}
               />
@@ -78,9 +84,28 @@ const HomeScreen = () => {
               Password: "",
             }}
             validationSchema={validationSchema}
-            onSubmit={(values) => {
+            onSubmit={(values, actions) => {
               // same shape as initial values
-              console.log(values);
+              axios
+                .post("/api/auth/user/register", {
+                  Username: values.Username,
+                  name: values.Name,
+                  Email: values.Email,
+                  password: values.Password,
+                })
+                .then((res) => {
+                  console.log(res);
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+              actions.setSubmitting(false);
+              actions.resetForm({
+                values: { Name: "",
+                Username: "",
+                Email: "",
+                Password: "", },
+              });
             }}
           >
             {({
@@ -92,7 +117,7 @@ const HomeScreen = () => {
               handleSubmit,
               isSubmitting,
             }) => (
-              <Form action="post" method="post" autoComplete="off">
+              <Form autoComplete="off" onSubmit={handleSubmit}>
                 <Label htmlFor="Name">Name</Label>
                 <InputField
                   type="text"
@@ -100,7 +125,7 @@ const HomeScreen = () => {
                   aria-label="Name"
                   placeholder="Enter your name"
                   autoComplete="off"
-                  values={values.Name}
+                  value={values.Name}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -123,7 +148,7 @@ const HomeScreen = () => {
                   aria-label="Username"
                   placeholder="Only alphanumeric allowed [a-z, A-Z, 0-9]"
                   autoComplete="off"
-                  values={values.Username}
+                  value={values.Username}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -146,7 +171,7 @@ const HomeScreen = () => {
                   aria-label="Email"
                   placeholder="Enter your email address"
                   autoComplete="off"
-                  values={values.Email}
+                  value={values.Email}
                   onChange={handleChange}
                   onBlur={handleBlur}
                 />
@@ -169,10 +194,13 @@ const HomeScreen = () => {
                   aria-label="Password"
                   placeholder="Enter a new password"
                   autoComplete="off"
-                  values={values.Password}
-                  onChange={handleChange}
+                  value={values.Password}
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                   onBlur={handleBlur}
                 />
+
                 {errors.Password && touched.Password && (
                   <div
                     style={{
@@ -185,7 +213,7 @@ const HomeScreen = () => {
                     {errors.Password}
                   </div>
                 )}
-                <SubmitButton type="submit">Let's go!</SubmitButton>
+                <SubmitButton type="submit" disabled={isSubmitting}>Let's go!</SubmitButton>
               </Form>
             )}
           </Formik>

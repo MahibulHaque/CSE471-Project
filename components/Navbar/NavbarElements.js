@@ -19,7 +19,7 @@ export const Logo = styled.img`
 export const NavLinks = styled.a`
     margin-right:1.5rem;
     cursor: pointer;
-    font-size:18px;
+    font-size:16px;
     color:#d4d4d4;
     color:${({whiteBar})=>whiteBar?"#545454":"#d4d4d4"};
     &:hover{

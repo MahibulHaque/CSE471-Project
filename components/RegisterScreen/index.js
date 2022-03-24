@@ -1,7 +1,6 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { FaGoogle, FaGithub } from "react-icons/fa";
-
 import {
   Form,
   Label,
@@ -17,9 +16,15 @@ import {
 import Link from "next/link";
 import styled from "styled-components";
 import axios from "axios";
-
-const Login = () => {
+const Register = () => {
   const validationSchema = Yup.object().shape({
+    Name: Yup.string()
+      .required("Name is Required.")
+      .min(3, "Name is Too Short."),
+    Username: Yup.string()
+      .required("Username is Required.")
+      .min(3, "Username is Too Short.")
+      .matches(/^[a-zA-Z0-9]*$/, "Username should only contain alphanumeric."),
     Email: Yup.string().email().required("Email is Required."),
     Password: Yup.string()
       .required("No password provided.")
@@ -30,9 +35,41 @@ const Login = () => {
   return (
     <Wrapper>
       <FormHeader whiteForm={true}>
-        Sign in to <span>RobuEdX</span>
+        Create a <span style={{}}>Free Account</span>
       </FormHeader>
+      <p
+        style={{
+          maxWidth: "450px",
+          textAlign: "center",
+          fontSize: "14px",
+          color: "#757575",
+          marginBottom:"2rem",
+        }}
+      >
+        Hands-on practice modules, learning paths for industry skills, projects,
+        community, and more.
+      </p>
       <FormContainer whiteForm={true}>
+        <ButtonContainer>
+          <Buttons
+            whiteForm={true}
+            style={{ marginRight: "1rem" }}
+            onClick={() => signIn("google")}
+          >
+            <FaGoogle
+              style={{ fill: "#757575", width: "22px", height: "auto" }}
+            />
+          </Buttons>
+
+          <Buttons onClick={() => signIn("github")} whiteForm={true}>
+            <FaGithub
+              style={{ fill: "#757575", width: "22px", height: "auto" }}
+            />
+          </Buttons>
+        </ButtonContainer>
+        <FormLine whiteForm={true}>
+        <span></span> Or use email to signup <span></span>
+      </FormLine>
         <Formik
           initialValues={{
             Name: "",
@@ -41,18 +78,21 @@ const Login = () => {
             Password: "",
           }}
           validationSchema={validationSchema}
-          onSubmit={async (values, actions) => {
+          onSubmit={(values, actions) => {
             // same shape as initial values
-            try {
-              const res = await axios.post("/api/auth/user/login", {
+            axios
+              .post("/api/auth/user/register", {
+                name: values.Name,
+                Username: values.Username,
                 Email: values.Email,
                 password: values.Password,
+              })
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
               });
-              console.log(res);
-            } catch (error) {
-              console.log(error);
-            }
-
             actions.setSubmitting(false);
             actions.resetForm({
               values: { Email: "", Password: "" },
@@ -69,6 +109,54 @@ const Login = () => {
             isSubmitting,
           }) => (
             <Form autoComplete="off" onSubmit={handleSubmit}>
+              <Label htmlFor="Name">Name</Label>
+              <InputField
+                type="text"
+                id="Name"
+                aria-label="Name"
+                placeholder="Enter your name"
+                autoComplete="off"
+                value={values.Name}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                whiteForm={true}
+              />
+              {errors.Name && touched.Name && (
+                <div
+                  style={{
+                    color: "#F44336",
+                    display: "block",
+                    marginBottom: ".75em",
+                    fontSize: "14px",
+                  }}
+                >
+                  {errors.Name}
+                </div>
+              )}
+              <Label htmlFor="Username">Username</Label>
+              <InputField
+                type="text"
+                id="Username"
+                aria-label="Username"
+                placeholder="Only alphanumeric allowed [a-z, A-Z, 0-9]"
+                autoComplete="off"
+                value={values.Username}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                whiteForm={true}
+              />
+              {errors.Username && touched.Username && (
+                <div
+                  style={{
+                    color: "#F44336",
+                    display: "block",
+                    marginBottom: ".75em",
+                    fontSize: "14px",
+                  }}
+                >
+                  {errors.Username}
+                </div>
+              )}
               <Label htmlFor="Email">Email Address</Label>
               <InputField
                 type="email"
@@ -121,44 +209,14 @@ const Login = () => {
                 </div>
               )}
               <SubmitButton type="submit" disabled={isSubmitting}>
-                Sign in
+                Submit Details
               </SubmitButton>
             </Form>
           )}
         </Formik>
-        <FormLine whiteForm={true}>
-          <span></span> Or continue with <span></span>
-        </FormLine>
-        <ButtonContainer>
-          <Buttons
-            whiteForm={true}
-            style={{ marginRight: "1rem" }}
-            onClick={() => signIn("google")}
-          >
-            <FaGoogle
-              style={{ fill: "#757575", width: "22px", height: "auto" }}
-            />
-          </Buttons>
-
-          <Buttons onClick={() => signIn("github")} whiteForm={true}>
-            <FaGithub
-              style={{ fill: "#757575", width: "22px", height: "auto" }}
-            />
-          </Buttons>
-        </ButtonContainer>
-        <p style={{ marginBottom: "2rem" }}>
-          Don't have an account?{" "}
-          <Link href="/register">
-            <a
-              style={{
-                color: "#4F46E5",
-                cursor: "pointer",
-                textDecoration: "none",
-              }}
-            >
-              Create One
-            </a>
-          </Link>
+        <p style={{ fontSize: "14px" }}>
+          Click submit details to proceed and{" "}
+          <span style={{ fontWeight: "bold" }}>verify your email</span>
         </p>
       </FormContainer>
     </Wrapper>
@@ -169,6 +227,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #fafafa;
+  background-color:#FAFAFA;
 `;
-export default Login;
+export default Register;

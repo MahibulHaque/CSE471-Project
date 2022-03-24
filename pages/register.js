@@ -1,8 +1,13 @@
 import React from 'react'
+import Navbar from '../components/Navbar'
+import Register from '../components/RegisterScreen'
 
 const register = () => {
   return (
-    <div>register</div>
+    <>
+      <Navbar whiteBar={true}/>
+      <Register/>
+    </>
   )
 }
 

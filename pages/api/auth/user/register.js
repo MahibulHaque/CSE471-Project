@@ -1,6 +1,7 @@
 import User from "../../../../models/User";
 import validator from "validator";
 import bcryptjs from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export default async function handler(req, res) {
   const { Username, Email, name, password } = req.body;
@@ -23,10 +24,30 @@ export default async function handler(req, res) {
                 email: Email,
                 username: Username,
               });
-              newUser.save();
-              return res
-                .status(201)
-                .json({ message: "Successful account creation" });
+              newUser
+                .save()
+                .then((savedUser) => {
+                  const token = jwt.sign(
+                    { id: savedUser._id },
+                    process.env.JWT_SECRET,
+                    {
+                      expiresIn: 3600 * 24,
+                    }
+                  );
+                  res.status(201).json({
+                    token,
+                    user: {
+                      id: savedUser.id,
+                      name: savedUser.name,
+                      email: savedUser.email,
+                      username: savedUser.username,
+                    },
+                    message: "Account created successfully",
+                  });
+                })
+                .catch((err) => {
+                  throw err;
+                });
             }
           });
         } else {
@@ -36,7 +57,7 @@ export default async function handler(req, res) {
         return res.status(200).json({ message: "Username already in use" });
       }
     } else {
-      return res.json({ message: "Email already in use" });
+      return res.status(200).json({ message: "Email already in use" });
     }
   } catch (error) {
     console.log(error);

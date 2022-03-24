@@ -21,8 +21,9 @@ export const NavLinks = styled.a`
     cursor: pointer;
     font-size:18px;
     color:#d4d4d4;
+    color:${({whiteBar})=>whiteBar?"#545454":"#d4d4d4"};
     &:hover{
-        color:white;
+        color:${({whiteBar})=>whiteBar?"black":"white"};
     }
 `
 export const NavButtons = styled(Button)`

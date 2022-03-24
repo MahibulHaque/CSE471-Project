@@ -4,9 +4,11 @@ import {FaGoogle} from "react-icons"
 
 export const Container = styled.div`
   width: 100%;
-  max-width:1400px;
-  display: grid;
+  max-width:${({whiteForm})=>whiteForm?"":"1400px"};
+  display: ${({whiteForm})=>whiteForm?"flex":"grid"};
   grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
+  align-items:center;
+  justify-content:center;
   place-items:center;
   grid-gap:5em;
   margin-block:5em;
@@ -53,20 +55,23 @@ export const HomeExploreButton = styled.button`
 `
 export const FormContainer = styled.div`
   width: clamp(350px,400px,500px);
-  border: 2px solid #262626;
+  border: 2px solid;
+  border-color:${({whiteForm})=>whiteForm?"white":"#262626"};
   border-radius:.25em;
   display:flex;
   flex-direction:column;
   align-items:center;
-  box-shadow: rgb(0 0 0 / 29%) 0px 26px 30px -10px,
-    rgb(0 0 0 / 33%) 0px 16px 10px -10px;
+  /* box-shadow: rgb(0 0 0 / 9%) 0px 26px 30px -10px,
+    rgb(0 0 0 / 3%) 0px 16px 10px -10px; */
+  box-shadow:rgb(0 0 0/10%)0 2px 3px 1px;
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
 
 `
 export const FormHeader = styled.h1`
   width:90%;
-  font-size:16px;
-  color:#D4D4D4;
+  text-align:${({whiteForm})=>whiteForm?"center":""};
+  font-size:${({whiteForm})=>whiteForm?"28px":"16px"};
+  color:${({whiteForm})=>whiteForm?"black":"#d4d4d4"};
   margin-bottom:1em;
 `
 
@@ -74,10 +79,10 @@ export const ButtonContainer = styled.div`
   width:90%;
   display:flex;
   flex-wrap:wrap;
-  margin-bottom:.5em;
+  margin-bottom:1em;
 `
 export const Buttons = styled.button`
-  background-color:#171717;
+  background-color:${({whiteForm})=>whiteForm?"white":"#171717"};
   flex-grow:1;
   display:flex;
   align-items:center;
@@ -85,11 +90,12 @@ export const Buttons = styled.button`
   padding-block:.75em;
   cursor: pointer;
   outline:none;
-  border:1px solid #262626;
+  border:1px solid;
+  border-color: ${({whiteForm})=>whiteForm?"#d4d4d4":"#262626"};
   border-radius:.5em;
 
   &:hover{
-    background-color:#404040;
+    background-color:${({whiteForm})=>whiteForm?"#FAFAFA":"#404040"};
   }
 
 `
@@ -100,32 +106,33 @@ export const FormLine = styled.p`
   & > span{
     flex-grow:1;
     height:2px;
-    background-color:#262626;
+    background-color:${({whiteForm})=>whiteForm?"#d4d4d4":"#262626"};
     margin-inline:1rem;
   }
-  color:#D4D4D4;
+  color:#757575;
 `
 export const Label = styled.label`
-  color:#D4D4D4;
+  color:#757575;
   font-size:14px;
   align-self:flex-start;
   display:block;
-  margin-bottom:.75em;
+  margin-bottom:.5em;
 `
 export const InputField = styled.input`
   width:97%;
   outline:none;
-  border:1px solid #262626;
+  border:1px solid;
+  border-color: ${({whiteForm})=>whiteForm?"#d4d4d4":"#262626"};
   border-radius:.5em;
-  background-color:#171717;
-  font-size:16px;
+  background-color:${({whiteForm})=>whiteForm?"white":"#171717"};
+  font-size:14px;
   caret-color:white;
   font-family:"Inter";
-  font-weight:500;
+  font-weight:400;
   padding-block:.75em;
   padding-inline:.5em;
-  margin-bottom:.25em;
-  color:#d4d4d4;
+  margin-bottom:1em;
+  color:${({whiteForm})=>whiteForm?"#757575":"#d4d4d4"};
 
   &:focus-within{
     border:2px solid #2563EB;

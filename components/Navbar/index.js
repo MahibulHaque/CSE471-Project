@@ -12,18 +12,18 @@ import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
 
-const Navbar = () => {
+const Navbar = ({whiteBar}) => {
   const { data: session, status } = useSession();
   return (
     <>
-      <Container>
+      <Container whiteBar={whiteBar}>
         <div>
           <Link href="/">
-            <NavLinks>Start Learning</NavLinks>
+            <NavLinks whiteBar={whiteBar}>Start Learning</NavLinks>
           </Link>
-          <NavLinks>Learning Paths</NavLinks>
-          <NavLinks>Pricing</NavLinks>
-          <NavLinks>Contact Us</NavLinks>
+          <NavLinks whiteBar={whiteBar}>Learning Paths</NavLinks>
+          <NavLinks whiteBar={whiteBar}>Pricing</NavLinks>
+          <NavLinks whiteBar={whiteBar}>Contact Us</NavLinks>
         </div>
         {!session && (
           <div>

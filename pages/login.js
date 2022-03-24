@@ -1,10 +1,13 @@
-import db from "../lib/database"
-
+import db from "../lib/database";
+import Login from "../components/LoginScreen";
+import Navbar from "../components/Navbar";
 const login = () => {
-  
   return (
-    <div>login</div>
-  )
-}
+    <>
+      <Navbar whiteBar={true}/>
+      <Login />
+    </>
+  );
+};
 
-export default login
+export default login;

@@ -1,6 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcryptjs from "bcryptjs";
 import User from "../../../../models/User";
+import { setCookies } from "cookies-next";
 export default async function handler(req, res) {
   const { Email, password } = req.body;
   if (!Email || !password) {
@@ -18,14 +19,14 @@ export default async function handler(req, res) {
             const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
               expiresIn: 3600 * 24,
             });
-            res.status(201).json({
-              token,
-              user: {
-                id: user._id,
-                name: user.name,
-                email: user.email,
-                username: user.username,
-              },
+            setCookies("user-token", token, {
+              req,
+              res,
+              maxAge: 3600,
+              httpOnly: true,
+              sameSite:"Lax"
+            });
+            res.status(202).json({
               message: "Login Successful",
             });
           } else {

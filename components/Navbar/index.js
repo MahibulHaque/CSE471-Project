@@ -18,10 +18,10 @@ const Navbar = ({ whiteBar }) => {
     <>
       <Container whiteBar={whiteBar}>
         {!whiteBar && (
-          <Image width={161.0938} height={48} src="/images/logo-white-01.svg" />
+          <Image width={123.033} height={36} src="/images/logo-white.svg" />
         )}
         {whiteBar && (
-          <Image width={161.0938} height={48} src="/images/logo-black.svg" />
+          <Image width={123.033} height={36} src="/images/logo-black-01.svg" />
         )}
         <div>
           <Link href="/">
@@ -36,13 +36,20 @@ const Navbar = ({ whiteBar }) => {
         {!session && (
           <div>
             <Link href="/login">
-              <NavButtons variant="outlined" color="primary">
+              <NavButtons
+                variant="outlined"
+                color="primary"
+                style={{ textTransform: "capitalize" }}
+              >
                 Sign in
               </NavButtons>
             </Link>
             <Link href="/register">
-              <NavButtons variant="contained" style={{ marginLeft: "1.5rem" }}>
-                Register
+              <NavButtons
+                variant="contained"
+                style={{ marginLeft: "1.5rem", textTransform: "capitalize" }}
+              >
+                register
               </NavButtons>
             </Link>
           </div>
@@ -50,10 +57,8 @@ const Navbar = ({ whiteBar }) => {
         {session && (
           <NavbarDashContainer>
             <DashboardButton>Dashboard</DashboardButton>
-            <NotificationButton>
-              <FaRegBell
-                style={{ width: "22px", height: "22px", fill: "#d4d4d4" }}
-              />
+            <NotificationButton whiteBar={whiteBar}>
+              <FaRegBell />
             </NotificationButton>
             <div
               style={{

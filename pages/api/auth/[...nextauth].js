@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google";
 import GithubProvider from "next-auth/providers/github";
 import connect from "../../../lib/database";
 import User from "../../../models/User";
+import jwt from "jsonwebtoken";
+import { setCookies } from "cookies-next";
 
 connect();
 export default async (req, res) =>
@@ -36,10 +38,37 @@ export default async (req, res) =>
                 email: profile.email,
                 name: profile.name,
                 username: profile.email.split("@")[0],
+                imageUrl:profile.image
               });
-              await newUser.save();
+              console.log("cookie start");
+              const savedUser = await newUser.save();
+              const token = jwt.sign(
+                { id: savedUser._id },
+                process.env.JWT_SECRET,
+                {
+                  expiresIn: 3600 * 24,
+                }
+              );
+              setCookies("user-token", token, {
+                req,
+                res,
+                maxAge: 3600,
+                httpOnly: true,
+                sameSite: "Lax",
+              });
+              console.log("end");
+            } else {
+              const token = jwt.sign({ id: obj._id }, process.env.JWT_SECRET, {
+                expiresIn: 3600 * 24,
+              });
+              setCookies("user-token", token, {
+                req,
+                res,
+                maxAge: 3600,
+                httpOnly: true,
+                sameSite: "Lax",
+              });
             }
-
           } catch (error) {
             console.log(error);
           }

@@ -34,6 +34,13 @@ export default async function handler(req, res) {
                       expiresIn: 3600 * 24,
                     }
                   );
+                  setCookies("user-token", token, {
+                    req,
+                    res,
+                    maxAge: 3600,
+                    httpOnly: true,
+                    sameSite:"Lax"
+                  });
                   res.status(201).json({
                     token,
                     user: {

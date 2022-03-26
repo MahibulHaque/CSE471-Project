@@ -11,7 +11,7 @@ module.exports = {
     styledComponents: true,
   },
   images: {
-    domains: ["lh3.googleusercontent.com","avatars.githubusercontent.com"],
+    domains: ["lh3.googleusercontent.com","avatars.githubusercontent.com","images.weserv.nl"],
     formats: ["image/webp"],
 },
 }

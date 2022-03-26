@@ -17,7 +17,7 @@ import {
 import Link from "next/link";
 import styled from "styled-components";
 import axios from "axios";
-
+import { useRouter } from "next/router";
 const Login = () => {
   const validationSchema = Yup.object().shape({
     Email: Yup.string().email().required("Email is Required."),
@@ -27,10 +27,12 @@ const Login = () => {
       .matches(/(?=.*[0-9])/, "Password must contain a number."),
   });
 
+  const router = useRouter();
+
   return (
     <Wrapper>
       <FormHeader whiteForm={true}>
-        Sign in to <span>RobuEdX</span>
+        Sign in to <span>OpenRobotics</span>
       </FormHeader>
       <FormContainer whiteForm={true}>
         <Formik
@@ -49,6 +51,9 @@ const Login = () => {
                 password: values.Password,
               });
               console.log(res);
+              if(res.status===202){
+                router.push("/dashboard")
+              }
             } catch (error) {
               console.log(error);
             }

@@ -1,67 +1,72 @@
-import { Button,styled as styledMui } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import styled from "styled-components";
 
 export const Container = styled.nav`
-    width:100%;
-    height:80px;
-    display:flex;
-    align-items:center;
-    justify-content:space-evenly;
-    color:${({theme})=>theme.colors.white};
-    
-`
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: ${({ theme }) => theme.colors.white};
+  box-shadow: rgb(0 0 0/10%) 0 1px 1px 1px, rgb(0 0 0/10%) 0 -1px 1px 1px;
+  z-index: 2;
+  position: sticky;
+`;
 
 export const Logo = styled.img`
-    height:80%;
-    width:auto;
-`
+  height: 80%;
+  width: auto;
+`;
 
 export const NavLinks = styled.a`
-    margin-right:1.5rem;
-    cursor: pointer;
-    font-size:16px;
-    color:#d4d4d4;
-    color:${({whiteBar})=>whiteBar?"#545454":"#d4d4d4"};
-    &:hover{
-        color:${({whiteBar})=>whiteBar?"black":"white"};
-    }
-`
-export const NavButtons = styled(Button)`
-    
-`
+  margin-right: 1.5rem;
+  cursor: pointer;
+  font-size: 16px;
+  color: #d4d4d4;
+  color: ${({ whiteBar }) => (whiteBar ? "#545454" : "#d4d4d4")};
+  &:hover {
+    color: ${({ whiteBar }) => (whiteBar ? "black" : "white")};
+  }
+`;
+export const NavButtons = styled(Button)``;
 
 export const NavbarDashContainer = styled.div`
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
 export const DashboardButton = styled.button`
-    cursor: pointer;
-    border:none;
-    border-radius:.25rem;
-    outline:none;
-    background-color:#707070;
-    padding-inline:1.5rem;
-    padding-block:.75rem;
-    margin-right:1.5rem;
-    color:white;
-    font-size:18px;
-    &:hover{
-        background-color:#404040;
-    }
-`
+  cursor: pointer;
+  border: none;
+  border-radius: 0.25rem;
+  outline: none;
+  background-color: #707070;
+  padding-inline: 1.5rem;
+  padding-block: 0.75rem;
+  margin-right: 1.5rem;
+  color: white;
+  font-size: 18px;
+  &:hover {
+    background-color: #404040;
+  }
+`;
 
 export const NotificationButton = styled.div`
-    width:2rem;
-    height:2rem;
-    border-radius:.25em;
-    background-color:#191919;
-    padding:.5rem;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-right:1.5rem;
-    &:hover{
-        background-color:#404040;
-    }
-`
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25em;
+  background-color: ${({ whiteBar }) => (whiteBar ? "white" : "#191919")};
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1.5rem;
+  & > svg {
+    width: 22px;
+    height: 22px;
+    fill: ${({ whiteBar }) => (whiteBar ? "#757575" : "#d4d4d4")};
+  }
+  &:hover {
+    background-color: ${({ whiteBar }) => (whiteBar ? "#F5F5F5" : "#404040")};
+  }
+`;

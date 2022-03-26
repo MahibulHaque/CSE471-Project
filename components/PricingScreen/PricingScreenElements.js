@@ -20,7 +20,6 @@ export const PricingHeader = styled.h1`
   font-weight: 900;
   width: 100%;
   text-align: center;
-
 `;
 export const PricingButtonContainer = styled.div`
   max-width: 400px;
@@ -34,15 +33,18 @@ export const PricingButtonContainer = styled.div`
 export const PricingButton = styled.button`
   border: none;
   outline: none;
-  background-color: ${({ activeButton }) =>
-    activeButton ? "white" : "#262626"};
+  background-color: #262626;
   font-size: 14px;
   padding-inline: 2em;
   text-align: center;
   padding-block: 0.5em;
   border-radius: 6px;
   cursor: pointer;
-  color: ${({ activeButton }) => (activeButton ? "#262626" : "white")};
+  color: white;
+  &.active {
+    color: #262626;
+    background-color: white;
+  }
 `;
 export const PricingPlanHolder = styled.div`
   display: flex;
@@ -78,9 +80,9 @@ export const PricingPlanHeader = styled.h1`
   margin-bottom: -0.25em;
   color: black;
 
-  &>span{
-      color:#757575;
-      font-size:18px;
+  & > span {
+    color: #757575;
+    font-size: 18px;
   }
 `;
 export const PricingPlanHeaderBottomTag = styled.p`
@@ -128,7 +130,7 @@ export const PricingPlanUl = styled.ul`
 `;
 export const PricingPlanListItem = styled.li`
   width: 90%;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   font-size: 14px;
   color: #757575;

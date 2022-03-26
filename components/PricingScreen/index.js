@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
 import {
   Container,
@@ -19,16 +19,37 @@ import {
 } from "./PricingScreenElements";
 
 const PricingScreen = () => {
+  const [activeButton, setActiveButton] = useState(2);
+
   return (
     <Container>
       <WrapperPrice>
         <PricingHeader>Pricing Plans</PricingHeader>
         <PricingButtonContainer>
-          <PricingButton activeButton={true}>Monthly</PricingButton>
-          <PricingButton>
+          <PricingButton
+            onClick={() => {
+              setActiveButton(1);
+            }}
+            className={`${activeButton == 1 ? "active" : ""}`}
+          >
+            Monthly
+          </PricingButton>
+          <PricingButton
+            onClick={() => {
+              setActiveButton(2);
+            }}
+            className={`${activeButton == 2 ? "active" : ""}`}
+          >
             Half Yearly<span>✨</span>
           </PricingButton>
-          <PricingButton>Yearly</PricingButton>
+          <PricingButton
+            onClick={() => {
+              setActiveButton(3);
+            }}
+            className={`${activeButton == 3 ? "active" : ""}`}
+          >
+            Yearly
+          </PricingButton>
         </PricingButtonContainer>
         <PricingPlanHolder>
           <PricingPlanContainer>
@@ -57,11 +78,16 @@ const PricingScreen = () => {
           <PricingPlanContainer>
             <PricingPlanSmallHeader>Pro</PricingPlanSmallHeader>
             <PricingPlanHeader>
-              ৳999<span>/mo</span>
+              {`${activeButton == 1 ? "৳999" : ""}${
+                activeButton == 2 ? "৳800" : ""
+              }${activeButton == 3 ? "৳750" : ""}`}
+              <span>/mo</span>
             </PricingPlanHeader>
-            <PricingPlanHeaderBottomTag>
-              ৳999 billed every month
-            </PricingPlanHeaderBottomTag>
+            <PricingPlanHeaderBottomTag>{`${
+              activeButton == 1 ? "৳999 billed every month" : ""
+            }${activeButton == 2 ? "৳4800 billed every 6 months" : ""}${
+              activeButton == 3 ? "৳9000 billed every 1 year" : ""
+            }`}</PricingPlanHeaderBottomTag>
             <PricingPlanButton>Subscribe to Pro</PricingPlanButton>
             <PricingPlanSpliter />
             <PricingPlanUlHeader>WHAT'S INCLUDED</PricingPlanUlHeader>

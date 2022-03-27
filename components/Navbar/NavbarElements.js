@@ -41,29 +41,30 @@ export const DashboardButton = styled.button`
   border-radius: 0.25rem;
   outline: none;
   background-color: #707070;
-  padding-inline: 1.5rem;
-  padding-block: 0.75rem;
+  padding-inline: 1.25rem;
+  padding-block: 0.5rem;
   margin-right: 1.5rem;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   &:hover {
     background-color: #404040;
   }
 `;
 
 export const NotificationButton = styled.div`
+  cursor: pointer;
   width: 2rem;
   height: 2rem;
   border-radius: 0.25em;
   background-color: ${({ whiteBar }) => (whiteBar ? "white" : "#191919")};
-  padding: 0.5rem;
+  padding: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-right: 1.5rem;
   & > svg {
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     fill: ${({ whiteBar }) => (whiteBar ? "#757575" : "#d4d4d4")};
   }
   &:hover {

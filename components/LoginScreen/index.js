@@ -18,6 +18,7 @@ import Link from "next/link";
 import styled from "styled-components";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 const Login = () => {
   const validationSchema = Yup.object().shape({
     Email: Yup.string().email().required("Email is Required."),
@@ -51,8 +52,8 @@ const Login = () => {
                 password: values.Password,
               });
               console.log(res);
-              if(res.status===202){
-                router.push("/dashboard")
+              if (res.status === 202) {
+                router.push("/dashboard");
               }
             } catch (error) {
               console.log(error);
@@ -138,14 +139,27 @@ const Login = () => {
           <Buttons
             whiteForm={true}
             style={{ marginRight: "1rem" }}
-            onClick={() => signIn("google")}
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/dashboard",
+                redirect: false,
+              })
+            }
           >
             <FaGoogle
               style={{ fill: "#757575", width: "22px", height: "auto" }}
             />
           </Buttons>
 
-          <Buttons onClick={() => signIn("github")} whiteForm={true}>
+          <Buttons
+            onClick={() =>
+              signIn("github", {
+                callbackUrl: "http://localhost:3000/dashboard",
+                redirect: false,
+              })
+            }
+            whiteForm={true}
+          >
             <FaGithub
               style={{ fill: "#757575", width: "22px", height: "auto" }}
             />

@@ -20,7 +20,7 @@ export default async (req, res) =>
         clientSecret: process.env.GITHUB_CLIENT_SECRET,
       }),
     ],
-    session: { jwt: true, maxAge: 30 * 24 * 60 * 60, updateAge: 24 * 60 * 60 },
+    session: { jwt: true, maxAge: 24 * 60 * 60, updateAge: 60 * 60 },
     jwt: {
       secret: process.env.NEXTAUTH_SECRET,
       encryption: true,

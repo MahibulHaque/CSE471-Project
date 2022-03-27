@@ -5,7 +5,11 @@ import styled from "styled-components";
 import HomeScreen from "../components/HomeScreen";
 import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
-export default function Home() {
+import jwt from 'jsonwebtoken'
+import User from '../models/User'
+
+
+export default function Home({email,name,image}) {
 
   return (
     <div className={styles.container}>
@@ -16,7 +20,7 @@ export default function Home() {
       </Head>
 
       <Main>
-        <Navbar />
+        <Navbar email={email} name={name} image={image}/>
         <HomeScreen />
       </Main>
     </div>
@@ -33,8 +37,21 @@ const Main = styled.main`
 
 export async function getServerSideProps({ req, res }) {
   try {
-    const cookieExists = getCookie("token", { req, res });
-    if (cookieExists) return { redirect: { destination: "/dashboard" } };
+    const token = getCookie("user-token", { req, res });
+    if (token){
+      const verified = jwt.verify(token,process.env.JWT_SECRET);
+      const obj = await User.findOne({ _id: verified.id });
+
+      if(obj){
+        return{
+          props:{
+            email:obj.email,
+            name:obj.name,
+            image:obj.imageUrl
+          }
+        }
+      }
+    };
     return { props: {} };
   } catch (error) {
     return { props: {} };

@@ -12,8 +12,9 @@ import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
 
-const Navbar = ({ whiteBar }) => {
+const Navbar = ({ whiteBar, email, name, image }) => {
   const { data: session, status } = useSession();
+
   return (
     <>
       <Container whiteBar={whiteBar}>
@@ -33,7 +34,7 @@ const Navbar = ({ whiteBar }) => {
           </Link>
           <NavLinks whiteBar={whiteBar}>Contact Us</NavLinks>
         </div>
-        {!session && (
+        {!name && (
           <div>
             <Link href="/login">
               <NavButtons
@@ -54,9 +55,11 @@ const Navbar = ({ whiteBar }) => {
             </Link>
           </div>
         )}
-        {session && (
+        {name && (
           <NavbarDashContainer>
-            <DashboardButton>Dashboard</DashboardButton>
+            <Link href="/dashboard">
+              <DashboardButton>Dashboard</DashboardButton>
+            </Link>
             <NotificationButton whiteBar={whiteBar}>
               <FaRegBell />
             </NotificationButton>
@@ -69,12 +72,7 @@ const Navbar = ({ whiteBar }) => {
                 overflow: "hidden",
               }}
             >
-              <Image
-                width={45}
-                height={45}
-                alt="Picture of user"
-                src={session?.user.image}
-              />
+              <Image width={35} height={35} alt="Picture of user" src={image} />
             </div>
           </NavbarDashContainer>
         )}

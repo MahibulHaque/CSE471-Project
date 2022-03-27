@@ -16,6 +16,7 @@ import {
 import Link from "next/link";
 import styled from "styled-components";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 const Register = () => {
   const validationSchema = Yup.object().shape({
     Name: Yup.string()

@@ -32,11 +32,11 @@ export const MenuLink = styled.a`
   cursor: pointer;
   color: #757575;
   fill: #757575;
-
-  font-size: 16px;
+  align-items:center;
+  font-size: 14px;
   background-color: none;
   & > svg {
-    font-size: 20px;
+    font-size: 24px;
     margin-right: .5em;
     margin-left: 1em;
   }
@@ -68,7 +68,7 @@ export const LogoutButton = styled.button`
   align-items: center;
   width: 100%;
   padding-block: 0.75em;
-  font-size: 16px;
+  font-size: 14px;
   text-align: center;
   color: #757575;
   background-color: white;
@@ -76,7 +76,7 @@ export const LogoutButton = styled.button`
   & > svg {
     margin-right: .5em;
     margin-left: 1em;
-    font-size: 20px;
+    font-size: 24px;
   }
   &:hover {
     background-color: #fafafa;

@@ -14,10 +14,13 @@ import {
   Buttons,
 } from "../HomeScreen/HomeScreenElements";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import styled from "styled-components";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 const Register = () => {
+  const router = useRouter();
+
   const validationSchema = Yup.object().shape({
     Name: Yup.string()
       .required("Name is Required.")
@@ -44,7 +47,7 @@ const Register = () => {
           textAlign: "center",
           fontSize: "14px",
           color: "#757575",
-          marginBottom:"2rem",
+          marginBottom: "2rem",
         }}
       >
         Hands-on practice modules, learning paths for industry skills, projects,
@@ -55,22 +58,35 @@ const Register = () => {
           <Buttons
             whiteForm={true}
             style={{ marginRight: "1rem" }}
-            onClick={() => signIn("google")}
+            onClick={() =>
+              signIn("google", {
+                callbackUrl: "http://localhost:3000/dashboard",
+                redirect: false,
+              })
+            }
           >
             <FaGoogle
               style={{ fill: "#757575", width: "22px", height: "auto" }}
             />
           </Buttons>
 
-          <Buttons onClick={() => signIn("github")} whiteForm={true}>
+          <Buttons
+            onClick={() =>
+              signIn("github", {
+                callbackUrl: "http://localhost:3000/dashboard",
+                redirect: false,
+              })
+            }
+            whiteForm={true}
+          >
             <FaGithub
               style={{ fill: "#757575", width: "22px", height: "auto" }}
             />
           </Buttons>
         </ButtonContainer>
         <FormLine whiteForm={true}>
-        <span></span> Or use email to signup <span></span>
-      </FormLine>
+          <span></span> Or use email to signup <span></span>
+        </FormLine>
         <Formik
           initialValues={{
             Name: "",
@@ -90,6 +106,9 @@ const Register = () => {
               })
               .then((res) => {
                 console.log(res);
+                if (res.status === 201) {
+                  router.push("/dashboard");
+                }
               })
               .catch((err) => {
                 console.log(err);
@@ -228,6 +247,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color:#FAFAFA;
+  background-color: #fafafa;
 `;
 export default Register;

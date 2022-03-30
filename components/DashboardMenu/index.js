@@ -17,7 +17,26 @@ import {
   AiOutlineSafetyCertificate,
   AiOutlineLogout,
 } from "react-icons/ai";
+import { useRouter } from "next/router";
+
 const DashboardMenu = () => {
+  const router = useRouter();
+  const handleLogout = () => {
+    fetch("/api/auth/user/logout", {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+      .then((res) => {
+        router.push("/");
+      })
+      .catch((err) => {
+        throw err;
+      });
+  };
+
   return (
     <Container>
       <MenuLinkContainer>
@@ -52,7 +71,7 @@ const DashboardMenu = () => {
       </MenuLinkContainer>
 
       <MenuButtonHolder>
-        <LogoutButton>
+        <LogoutButton onClick={handleLogout}>
           <AiOutlineLogout />
           Logout
         </LogoutButton>

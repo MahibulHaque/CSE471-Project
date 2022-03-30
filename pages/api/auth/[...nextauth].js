@@ -52,7 +52,7 @@ export default async (req, res) =>
               setCookies("user-token", token, {
                 req,
                 res,
-                maxAge: 3600,
+                maxAge: 3600*24,
                 httpOnly: true,
                 sameSite: "Lax",
               });
@@ -64,7 +64,7 @@ export default async (req, res) =>
               setCookies("user-token", token, {
                 req,
                 res,
-                maxAge: 3600,
+                maxAge: 3600*24,
                 httpOnly: true,
                 sameSite: "Lax",
               });

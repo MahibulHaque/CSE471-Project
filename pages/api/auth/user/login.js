@@ -22,9 +22,11 @@ export default async function handler(req, res) {
             setCookies("user-token", token, {
               req,
               res,
-              maxAge: 3600,
+              maxAge: 3600 * 24,
               httpOnly: true,
-              sameSite:"Lax"
+              secure: process.env.NODE_ENV !== "development",
+              sameSite: "strict",
+              path: "/",
             });
             res.status(202).json({
               message: "Login Successful",

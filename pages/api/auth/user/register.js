@@ -2,6 +2,7 @@ import User from "../../../../models/User";
 import validator from "validator";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import { setCookies } from "cookies-next";
 
 export default async function handler(req, res) {
   const { Username, Email, name, password } = req.body;
@@ -37,9 +38,11 @@ export default async function handler(req, res) {
                   setCookies("user-token", token, {
                     req,
                     res,
-                    maxAge: 3600,
+                    maxAge: 3600 * 24,
                     httpOnly: true,
-                    sameSite:"Lax"
+                    secure: process.env.NODE_ENV !== "development",
+                    sameSite: "strict",
+                    path:"/"
                   });
                   res.status(201).json({
                     token,

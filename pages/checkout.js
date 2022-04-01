@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
-import Navbar from "../components/Navbar";
-import PricingScreen from "../components/PricingScreen";
 import { useRouter } from "next/router";
+import CheckoutScreen from "../components/CheckoutScreen";
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -28,7 +27,7 @@ const checkout = () => {
   }, [success, canceled]);
   return (
     <>
-      <div>Checkout</div>
+      <CheckoutScreen />
     </>
   );
 };

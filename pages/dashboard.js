@@ -3,12 +3,15 @@ import React from "react";
 import connect from "../lib/database";
 import jwt from "jsonwebtoken";
 import User from "../models/User";
-import DashBoardScreen from "../components/DashBoardScreen";
-import Navbar from "../components/Navbar";
-const dashboard = ({email,name,image}) => {
+import dynamic from "next/dynamic";
+
+const Navbar = dynamic(() => import("../components/Navbar"));
+const DashBoardScreen = dynamic(() => import("../components/DashBoardScreen"));
+
+const dashboard = ({ email, name, image }) => {
   return (
     <>
-      <Navbar whiteBar={true} email={email} name={name} image={image}/>
+      <Navbar whiteBar={true} email={email} name={name} image={image} />
       <DashBoardScreen />
     </>
   );
@@ -28,7 +31,7 @@ export async function getServerSideProps({ req, res }) {
       props: {
         email: obj.email,
         name: obj.name,
-        image:obj.imageUrl
+        image: obj.imageUrl,
       },
     };
   } catch (error) {

@@ -2,13 +2,13 @@ import { getCookie } from "cookies-next";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import HomeScreen from "../components/HomeScreen";
-import Navbar from "../components/Navbar";
 import styles from "../styles/Home.module.css";
 import jwt from 'jsonwebtoken'
 import User from '../models/User'
+import dynamic from "next/dynamic";
 
-
+const Navbar = dynamic(()=>import("../components/Navbar"))
+const HomeScreen = dynamic(()=>import("../components/HomeScreen"))
 export default function Home({email,name,image}) {
 
   return (

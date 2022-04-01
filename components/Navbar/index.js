@@ -19,10 +19,10 @@ const Navbar = ({ whiteBar, email, name, image }) => {
     <>
       <Container whiteBar={whiteBar}>
         {!whiteBar && (
-          <Image width={123.033} height={36} src="/images/logo-white.svg" />
+          <Image width={123.033} height={36} src="/images/logo-white.svg" alt="Open Robotics logo"/>
         )}
         {whiteBar && (
-          <Image width={123.033} height={36} src="/images/logo-black-01.svg" />
+          <Image width={123.033} height={36} src="/images/logo-black-01.svg" alt="Open Robotics logo"/>
         )}
         <div>
           <Link href="/">

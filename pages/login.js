@@ -1,10 +1,10 @@
-import db from "../lib/database";
-import Login from "../components/LoginScreen";
-import Navbar from "../components/Navbar";
+import dynamic from "next/dynamic";
+const Navbar = dynamic(() => import("../components/Navbar"));
+const Login = dynamic(() => import("../components/LoginScreen"));
 const login = () => {
   return (
     <>
-      <Navbar whiteBar={true}/>
+      <Navbar whiteBar={true} />
       <Login />
     </>
   );

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { FaCheck } from "react-icons/fa";
+import jwt from "jsonwebtoken";
+import { useRouter } from "next/router";
 import {
   Container,
   PricingButton,
@@ -17,9 +19,43 @@ import {
   PricingPlanUlHeader,
   WrapperPrice,
 } from "./PricingScreenElements";
+import Router from "next/router";
 
 const PricingScreen = () => {
+  const router = useRouter();
+  
   const [activeButton, setActiveButton] = useState(2);
+
+  const handleCheckoutClick = () => {
+    let headerToken;
+    if (activeButton === 1) {
+      headerToken = jwt.sign(
+        { purchaseType: "pro", planType: "1month" },
+        process.env.HEADER_SECRET,
+        {
+          expiresIn: 3600 * 24,
+        }
+      );
+    } else if (activeButton === 2) {
+      headerToken = jwt.sign(
+        { purchaseType: "pro", planType: "6month" },
+        process.env.HEADER_SECRET,
+        {
+          expiresIn: 3600 * 24,
+        }
+      );
+    } else if (activeButton === 3) {
+      headerToken = jwt.sign(
+        { purchaseType: "pro", planType: "12month" },
+        process.env.HEADER_SECRET,
+        {
+          expiresIn: 3600 * 24,
+        }
+      );
+    }
+
+    router.push(`/checkout?token=${headerToken}`)
+  };
 
   return (
     <Container>
@@ -88,7 +124,10 @@ const PricingScreen = () => {
             }${activeButton == 2 ? "৳4800 billed every 6 months" : ""}${
               activeButton == 3 ? "৳9000 billed every 1 year" : ""
             }`}</PricingPlanHeaderBottomTag>
-            <PricingPlanButton>Subscribe to Pro</PricingPlanButton>
+            <PricingPlanButton onClick={handleCheckoutClick}>
+              Subscribe to Pro
+            </PricingPlanButton>
+
             <PricingPlanSpliter />
             <PricingPlanUlHeader>WHAT'S INCLUDED</PricingPlanUlHeader>
             <PricingPlanUl>

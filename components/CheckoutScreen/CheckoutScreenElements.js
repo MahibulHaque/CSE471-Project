@@ -100,8 +100,9 @@ export const PaymentProcessContainer = styled.div`
 export const RadioButtons = styled(FormControlLabel)`
   padding-block: 15px;
   width: 100%;
-  padding-inline: 0px;
-  margin: 0;
+  /* padding-inline: 15px; */
+  margin-left: 0;
+  margin-right:0;
 
   & .MuiTypography-body1 {
     font-size: 14px;

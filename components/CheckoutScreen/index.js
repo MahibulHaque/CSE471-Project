@@ -18,8 +18,33 @@ import {
   Wrapper,
   WrapperPrice,
 } from "./CheckoutScreenElements";
+import jwt from "jsonwebtoken";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+const CheckoutScreen = ({ headerToken }) => {
+  const router = useRouter();
 
-const CheckoutScreen = () => {
+  const { success, canceled } = router.query;
+  useEffect(() => {
+    // Check to see if this is a redirect back from Checkout
+    // const query = new URLSearchParams(window.location.search);
+    if (success !== undefined || canceled !== undefined) {
+      if (success) {
+        console.log("Order placed! You will receive an email confirmation.");
+      }
+
+      if (canceled) {
+        console.log(
+          "Order canceled -- continue to shop around and checkout when you’re ready."
+        );
+      }
+    }
+  }, [success, canceled]);
+  const payload = jwt.verify(headerToken, process.env.HEADER_SECRET);
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: "50%",
     width: 16,
@@ -119,6 +144,7 @@ const CheckoutScreen = () => {
                 value="creditCard"
                 control={<BpRadio />}
                 label="Credit/Debit card (Processed via Stripe)"
+                // onChange={(event)=>{console.log(event.target.value)}}
               />
               <PaymentProcessContainer>
                 <VscCreditCard />
@@ -160,14 +186,23 @@ const CheckoutScreen = () => {
               alt="Open Robotics logo"
             />
             <h3>
-              Pro membership (6 months)
-              <span>Full access to codedamn platform</span>
+              Pro membership (
+              {`${payload.planType === "1month" ? "1 month" : ""}${
+                payload.planType === "6month" ? "6 months" : ""
+              }${payload.planType === "12month" ? "12 months" : ""}`}
+              )<span>Full access to codedamn platform</span>
             </h3>
-            <p>৳4800 every 6 months</p>
+            <p>{`${payload.planType === "1month" ? "৳999 every month" : ""}${
+              payload.planType === "6month" ? "৳4800 every 6 months" : ""
+            }${
+              payload.planType === "12month" ? "৳9000 every 12 months" : ""
+            }`}</p>
           </PriceInfo>
           <PriceContainer>
             <span>Subtotal:</span>
-            <h4>৳4800.00</h4>
+            <h4>{`${payload.planType === "1month" ? "৳999.00" : ""}${
+              payload.planType === "6month" ? "৳4800.00" : ""
+            }${payload.planType === "12month" ? "৳9000.00" : ""}`}</h4>
           </PriceContainer>
           <PriceContainer style={{ borderBottom: "1px solid #d4d4d4" }}>
             <span>Taxes:</span>
@@ -176,7 +211,10 @@ const CheckoutScreen = () => {
           <PriceContainer>
             <span>Total:</span>
             <h2>
-              <span>BDT</span> ৳4800.00
+              <span>BDT</span>{" "}
+              {`${payload.planType === "1month" ? "৳999.00" : ""}${
+                payload.planType === "6month" ? "৳4800.00" : ""
+              }${payload.planType === "12month" ? "৳9000.00" : ""}`}
             </h2>
           </PriceContainer>
         </PriceInfoContainer>

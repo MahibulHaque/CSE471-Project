@@ -19,31 +19,15 @@ import {
   WrapperPrice,
 } from "./CheckoutScreenElements";
 import jwt from "jsonwebtoken";
+import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { loadStripe } from "@stripe/stripe-js";
+// import { loadStripe } from "@stripe/stripe-js";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
-loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
+// loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY);
 const CheckoutScreen = ({ headerToken }) => {
   const router = useRouter();
-
-  const { success, canceled } = router.query;
-  useEffect(() => {
-    // Check to see if this is a redirect back from Checkout
-    // const query = new URLSearchParams(window.location.search);
-    if (success !== undefined || canceled !== undefined) {
-      if (success) {
-        console.log("Order placed! You will receive an email confirmation.");
-      }
-
-      if (canceled) {
-        console.log(
-          "Order canceled -- continue to shop around and checkout when you’re ready."
-        );
-      }
-    }
-  }, [success, canceled]);
   const payload = jwt.verify(headerToken, process.env.HEADER_SECRET);
   const BpIcon = styled("span")(({ theme }) => ({
     borderRadius: "50%",
@@ -107,9 +91,21 @@ const CheckoutScreen = ({ headerToken }) => {
       />
     );
   }
+
+  const handlePaymentRedirection = async (e) => {
+    e.preventDefault();
+    console.log("yes submmitted");
+    try {
+      const res = await axios.post("/api/checkout_session", { ...payload });
+      router.push(res.data.url)
+      
+    } catch (error) {
+      throw error;
+    }
+  };
   return (
     <Container>
-      <Wrapper>
+      <Wrapper onSubmit={handlePaymentRedirection}>
         <DetailContainer>
           <HeaderDetail>Open Robotics</HeaderDetail>
           <TextBox>
@@ -144,6 +140,8 @@ const CheckoutScreen = ({ headerToken }) => {
                 value="creditCard"
                 control={<BpRadio />}
                 label="Credit/Debit card (Processed via Stripe)"
+                style={{ margin: 0 }}
+
                 // onChange={(event)=>{console.log(event.target.value)}}
               />
               <PaymentProcessContainer>
@@ -158,19 +156,22 @@ const CheckoutScreen = ({ headerToken }) => {
                 disabled
                 control={<BpRadio />}
                 label="Netbanking/UPI (Not available for this purchase)"
+                style={{ margin: 0 }}
               />
               <RadioButtons
                 value="disabled"
                 disabled
                 control={<BpRadio />}
                 label="PayPal (Not available for this purchase)"
-                style={{ borderTop: "1px solid #d4d4d4" }}
+                style={{ borderTop: "1px solid #d4d4d4", margin: 0 }}
               />
             </RadioGroup>
           </PaymentContainer>
 
           <ButtonContainer>
-            <button className="paymentButton">Complete Order</button>
+            <button className="paymentButton" type="submit">
+              Complete Order
+            </button>
             <button className="redirectButton">Return to site</button>
           </ButtonContainer>
         </DetailContainer>

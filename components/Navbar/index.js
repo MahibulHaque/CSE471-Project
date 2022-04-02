@@ -1,28 +1,38 @@
 import {
   Container,
-  Logo,
-  NavLinks,
   NavButtons,
   NavbarDashContainer,
   DashboardButton,
   NotificationButton,
+  NavLinks
 } from "./NavbarElements";
-import { useSession, getProviders } from "next-auth/react";
 import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
 
+
+
+
 const Navbar = ({ whiteBar, email, name, image }) => {
-  const { data: session, status } = useSession();
 
   return (
     <>
       <Container whiteBar={whiteBar}>
         {!whiteBar && (
-          <Image width={123.033} height={36} src="/images/logo-white.svg" alt="Open Robotics logo"/>
+          <Image
+            width={123.033}
+            height={36}
+            src="/images/logo-white.svg"
+            alt="Open Robotics logo"
+          />
         )}
         {whiteBar && (
-          <Image width={123.033} height={36} src="/images/logo-black-01.svg" alt="Open Robotics logo"/>
+          <Image
+            width={123.033}
+            height={36}
+            src="/images/logo-black-01.svg"
+            alt="Open Robotics logo"
+          />
         )}
         <div>
           <Link href="/">

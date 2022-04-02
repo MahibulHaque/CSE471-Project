@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { signIn } from "next-auth/react";
 import {
   ButtonContainer,
@@ -7,7 +6,6 @@ import {
   FormContainer,
   FormHeader,
   FormLine,
-  GoogleButton,
   HomeExploreButton,
   HomeHeaderTag,
   HomeSubTag,
@@ -16,13 +14,10 @@ import {
   TextContainer,
   Form,
   SubmitButton,
-  StrengthIndicator,
 } from "./HomeScreenElements";
 import { Formik } from "formik";
 import * as Yup from "yup";
-
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import zxcvbn from "zxcvbn";
 import axios from "axios";
 
 const HomeScreen = () => {

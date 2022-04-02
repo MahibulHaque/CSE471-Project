@@ -3,14 +3,15 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import styles from "../styles/Home.module.css";
-import jwt from 'jsonwebtoken'
-import User from '../models/User'
+import jwt from "jsonwebtoken";
+import User from "../models/User";
 import dynamic from "next/dynamic";
+import HomeScreen from "../components/HomeScreen";
+import Navbar from "../components/Navbar";
 
-const Navbar = dynamic(()=>import("../components/Navbar"))
-const HomeScreen = dynamic(()=>import("../components/HomeScreen"))
-export default function Home({email,name,image}) {
+// const Navbar = dynamic(()=>import("../components/Navbar"),{ssr:false,loading:()=><div style={{height:"60px"}}/>})
 
+export default function Home({ email, name, image }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -20,7 +21,7 @@ export default function Home({email,name,image}) {
       </Head>
 
       <Main>
-        <Navbar email={email} name={name} image={image}/>
+        <Navbar email={email} name={name} image={image} />
         <HomeScreen />
       </Main>
     </div>
@@ -38,24 +39,22 @@ const Main = styled.main`
 export async function getServerSideProps({ req, res }) {
   try {
     const token = getCookie("user-token", { req, res });
-    if (token){
-      const verified = jwt.verify(token,process.env.JWT_SECRET);
+    if (token) {
+      const verified = jwt.verify(token, process.env.JWT_SECRET);
       const obj = await User.findOne({ _id: verified.id });
 
-      if(obj){
-        return{
-          props:{
-            email:obj.email,
-            name:obj.name,
-            image:obj.imageUrl
-          }
-        }
+      if (obj) {
+        return {
+          props: {
+            email: obj.email,
+            name: obj.name,
+            image: obj.imageUrl,
+          },
+        };
       }
-    };
+    }
     return { props: {} };
   } catch (error) {
     return { props: {} };
   }
 }
-
-

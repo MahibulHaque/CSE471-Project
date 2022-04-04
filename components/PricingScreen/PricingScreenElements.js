@@ -77,7 +77,7 @@ export const PricingPlanHeader = styled.h1`
   text-align: left;
   font-size: 30px;
   margin-top: 0px;
-  margin-bottom: -0.25em;
+  margin-bottom: 0.25em;
   color: black;
 
   & > span {
@@ -139,5 +139,6 @@ export const PricingPlanListItem = styled.li`
   margin-bottom: 1.5em;
   & > svg {
     margin-right: 0.75em;
+    margin-left: 1.5rem;
   }
 `;

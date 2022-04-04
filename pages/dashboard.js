@@ -4,15 +4,20 @@ import connect from "../lib/database";
 import jwt from "jsonwebtoken";
 import User from "../models/User";
 import dynamic from "next/dynamic";
+import DashBoardScreen from '../components/DashBoardScreen'
 
 const Navbar = dynamic(() => import("../components/Navbar"));
-const DashBoardScreen = dynamic(() => import("../components/DashBoardScreen"));
 
+const Footer = dynamic(() => import("../components/Footer"), {
+  ssr: false,
+  loading: () => <div />,
+});
 const dashboard = ({ email, name, image }) => {
   return (
     <>
       <Navbar whiteBar={true} email={email} name={name} image={image} />
       <DashBoardScreen />
+      <Footer />
     </>
   );
 };

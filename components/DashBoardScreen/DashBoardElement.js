@@ -80,10 +80,12 @@ export const LastActivityContainer = styled.div`
   & > h1 {
     font-size: 20px;
     color: black;
-    margin-bottom: -0.25em;
+    margin-bottom: 0.25em;
   }
   & > p {
     font-size: 14px;
+    margin-bottom: 1em;
+
   }
   & > button {
     font-size: 14px;
@@ -116,7 +118,7 @@ export const ProgressHeader = styled.h1`
   font-size: 24px;
   font-weight: 700;
   color: black;
-  margin-block: 0;
+  margin-bottom: 1rem;
 `;
 export const ProgressP = styled.p`
   font-size: 14px;

@@ -12,7 +12,7 @@ export const Container = styled.div`
   flex-direction: column;
   place-items: center;
   grid-gap: 5em;
-  margin-block: 5em;
+  margin-block: 6em;
 `;
 export const TextContainer = styled.div`
   display: flex;
@@ -39,6 +39,7 @@ export const HomeSubTag = styled.p`
   width: 100%;
   font-size: clamp(14px, 3.5vw, 20px);
   color: #d4d4d4;
+  margin-block:2rem;
 `;
 
 export const HomeExploreButton = styled.button`
@@ -72,6 +73,7 @@ export const FormContainer = styled.div`
 `;
 export const FormHeader = styled.h1`
   width: 90%;
+  margin-block:1rem;
   text-align: ${({ whiteForm }) => (whiteForm ? "center" : "")};
   font-size: ${({ whiteForm }) => (whiteForm ? "30px" : "16px")};
   color: ${({ whiteForm }) => (whiteForm ? "black" : "#d4d4d4")};

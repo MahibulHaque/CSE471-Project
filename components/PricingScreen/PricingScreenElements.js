@@ -9,17 +9,18 @@ export const Container = styled.div`
 
 export const WrapperPrice = styled.div`
   width: 100%;
-  background-color: #fafafa;
+  background-color: #f5f5f5;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block: 2em;
+  padding-block: 4em;
 `;
 export const PricingHeader = styled.h1`
   font-size: clamp(30px, 6vw, 50px);
   font-weight: 900;
   width: 100%;
   text-align: center;
+  margin-bottom:.5em;
 `;
 export const PricingButtonContainer = styled.div`
   max-width: 400px;

@@ -83,6 +83,7 @@ export const PaymentProcessContainer = styled.div`
     color: #262626;
     font-size: 14px;
     text-align: center;
+    margin-bottom:1rem;
   }
 
   & > svg {
@@ -169,6 +170,7 @@ export const PriceInfo = styled.div`
     flex-direction: column;
     font-size: 16px;
     & > span {
+      margin-block:1em;
       font-size: 14px;
       color: #757575;
       font-weight: 400;
@@ -187,6 +189,8 @@ export const PriceContainer = styled.div`
   width: 90%;
   align-items: center;
   justify-content: space-between;
+  margin-bottom:1rem;
+
   & > h4 {
     font-size: 16px;
     font-weight: 500;

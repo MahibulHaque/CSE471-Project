@@ -4,17 +4,13 @@ import {
   NavbarDashContainer,
   DashboardButton,
   NotificationButton,
-  NavLinks
+  NavLinks,
 } from "./NavbarElements";
 import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
 
-
-
-
 const Navbar = ({ whiteBar, email, name, image }) => {
-
   return (
     <>
       <Container whiteBar={whiteBar}>
@@ -38,7 +34,10 @@ const Navbar = ({ whiteBar, email, name, image }) => {
           <Link href="/">
             <NavLinks whiteBar={whiteBar}>Start Learning</NavLinks>
           </Link>
-          <NavLinks whiteBar={whiteBar}>Learning Paths</NavLinks>
+          <Link href="/learning-paths">
+            <NavLinks whiteBar={whiteBar}>Learning Paths</NavLinks>
+          </Link>
+
           <Link href="/pricing">
             <NavLinks whiteBar={whiteBar}>Pricing</NavLinks>
           </Link>

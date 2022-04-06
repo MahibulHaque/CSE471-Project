@@ -15,6 +15,7 @@ module.exports = {
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
       "images.weserv.nl",
+      "codedamn.com"
     ],
     formats: ["image/webp"],
   },

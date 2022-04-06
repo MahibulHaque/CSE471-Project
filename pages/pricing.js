@@ -1,12 +1,13 @@
 import dynamic from "next/dynamic";
-
+import PricingScreen from "../components/PricingScreen";
 const Navbar = dynamic(() => import("../components/Navbar"));
-const PricingScreen = dynamic(() => import("../components/PricingScreen"));
+const Footer = dynamic(() => import("../components/Footer"));
 const pricing = () => {
   return (
     <>
       <Navbar whiteBar={true} />
       <PricingScreen />
+      <Footer />
     </>
   );
 };

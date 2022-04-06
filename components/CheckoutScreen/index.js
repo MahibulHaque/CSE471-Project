@@ -116,7 +116,7 @@ const CheckoutScreen = ({ headerToken }) => {
             style={{
               color: "#262626",
               fontWeight: "400",
-              marginBottom: "-.5em",
+              marginBottom: ".5em",
             }}
           >
             Payment

@@ -1,5 +1,6 @@
 import {
   Container,
+  ImageHolder,
   LogoutButton,
   MenuButtonHolder,
   MenuLink,
@@ -18,8 +19,9 @@ import {
   AiOutlineLogout,
 } from "react-icons/ai";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
-const DashboardMenu = () => {
+const DashboardMenu = ({ name, image }) => {
   const router = useRouter();
   const handleLogout = () => {
     fetch("/api/auth/user/logout", {
@@ -69,13 +71,23 @@ const DashboardMenu = () => {
           Your Certificates
         </MenuLink>
       </MenuLinkContainer>
-
-      <MenuButtonHolder>
-        <LogoutButton onClick={handleLogout}>
-          <AiOutlineLogout />
-          Logout
-        </LogoutButton>
-      </MenuButtonHolder>
+      {name && (
+        <MenuButtonHolder>
+          <LogoutButton onClick={handleLogout}>
+            <AiOutlineLogout />
+            Logout
+          </LogoutButton>
+          <ImageHolder>
+            <img
+              src={image}
+              width={30}
+              height={30}
+              style={{ marginLeft: "20px" }}
+            />
+            <p>{name}</p>
+          </ImageHolder>
+        </MenuButtonHolder>
+      )}
     </Container>
   );
 };

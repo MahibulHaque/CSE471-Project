@@ -27,12 +27,11 @@ export default async function handler(req, res) {
           },
         ],
         mode: "subscription",
-        success_url: `${req.headers.origin}/?success=true`,
+        success_url: `${req.headers.origin}/thank-you?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/?canceled=true`,
       });
       // console.log(session);
       res.json({ url: session.url });
-      
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }

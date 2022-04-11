@@ -24,7 +24,7 @@ export const HomeHeaderTag = styled.h1`
   font-size: clamp(40px, 6vw, 65px);
   font-weight: 800;
   color: white;
-  margin-bottom: -0.5rem;
+  margin-bottom: 0.5rem;
   & > span {
     background-image: linear-gradient(45deg, #c4d2fe, #41d2f1);
     background-size: 100%;
@@ -73,7 +73,7 @@ export const FormContainer = styled.div`
 `;
 export const FormHeader = styled.h1`
   width: 90%;
-  margin-block:1rem;
+  margin-block:2ch;
   text-align: ${({ whiteForm }) => (whiteForm ? "center" : "")};
   font-size: ${({ whiteForm }) => (whiteForm ? "30px" : "16px")};
   color: ${({ whiteForm }) => (whiteForm ? "black" : "#d4d4d4")};
@@ -145,7 +145,7 @@ export const InputField = styled.input`
   font-weight: 400;
   padding-block: 0.75em;
   padding-inline: 0.5em;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
   color: ${({ whiteForm }) => (whiteForm ? "#757575" : "#d4d4d4")};
 
   &:focus-within {

@@ -22,6 +22,7 @@ import jwt from "jsonwebtoken";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Link from "next/link";
 // import { loadStripe } from "@stripe/stripe-js";
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
@@ -97,8 +98,7 @@ const CheckoutScreen = ({ headerToken }) => {
     console.log("yes submmitted");
     try {
       const res = await axios.post("/api/checkout_session", { ...payload });
-      router.push(res.data.url)
-      
+      router.push(res.data.url);
     } catch (error) {
       throw error;
     }
@@ -172,7 +172,9 @@ const CheckoutScreen = ({ headerToken }) => {
             <button className="paymentButton" type="submit">
               Complete Order
             </button>
-            <button className="redirectButton">Return to site</button>
+            <Link href="/pricing">
+              <button className="redirectButton">Return to site</button>
+            </Link>
           </ButtonContainer>
         </DetailContainer>
       </Wrapper>

@@ -59,7 +59,18 @@ export const MenuButtonHolder = styled.div`
   align-items: center;
   flex-direction: column;
 `;
-
+export const ImageHolder = styled.div`
+  display:flex;
+  align-items:center;
+  padding-block:1rem;
+  width:100%;
+  cursor: pointer;
+  border-top:1px solid #d4d4d4;
+  &>p{
+    font-size:14px;
+    margin-left:.75em;
+  }
+`
 export const LogoutButton = styled.button`
   outline: none;
   border: none;

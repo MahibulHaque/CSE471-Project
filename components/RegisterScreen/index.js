@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import AlertComponent from "../AlertComponent";
 const Register = () => {
   const router = useRouter();
 

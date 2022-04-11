@@ -23,7 +23,7 @@ import {
 import { LinearProgress, linearProgressClasses, styled } from "@mui/material";
 import {FaArrowRight} from 'react-icons/fa'
 
-const DashBoardScreen = () => {
+const DashBoardScreen = ({name,image}) => {
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
     borderRadius: 10,
@@ -42,7 +42,7 @@ const DashBoardScreen = () => {
   const percentage = 16;
   return (
     <Container>
-      <DashboardMenu />
+      <DashboardMenu name={name} image={image}/>
       <MainContainer>
         <Topbar>
           <HeaderTag>Good evening, Mahibul.</HeaderTag>

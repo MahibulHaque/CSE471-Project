@@ -15,11 +15,12 @@ module.exports = {
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
       "images.weserv.nl",
-      "codedamn.com"
+      "codedamn.com",
     ],
     formats: ["image/webp"],
   },
-  env:{
-    HEADER_SECRET:'H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjX'
-  }
+  env: {
+    HEADER_SECRET: "H+MbQeThWmZq4t7w9z$C&F)J@NcRfUjX",
+  },
+
 };

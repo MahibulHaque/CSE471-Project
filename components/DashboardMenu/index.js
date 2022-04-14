@@ -20,8 +20,10 @@ import {
 } from "react-icons/ai";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { useUserContext } from "../../pages/Contexts/UserContext";
 
-const DashboardMenu = ({ name, image }) => {
+const DashboardMenu = () => {
+  const { user } = useUserContext();
   const router = useRouter();
   const handleLogout = () => {
     fetch("/api/auth/user/logout", {
@@ -71,20 +73,23 @@ const DashboardMenu = ({ name, image }) => {
           Your Certificates
         </MenuLink>
       </MenuLinkContainer>
-      {name && (
+      {user?.name && (
         <MenuButtonHolder>
           <LogoutButton onClick={handleLogout}>
             <AiOutlineLogout />
             Logout
           </LogoutButton>
           <ImageHolder>
-            <img
-              src={image}
-              width={30}
-              height={30}
-              style={{ marginLeft: "20px" }}
-            />
-            <p>{name}</p>
+            <div>
+              <Image
+                src={user?.image}
+                width={30}
+                height={30}
+                style={{ marginLeft: "20px" }}
+              />
+            </div>
+
+            <p>{user?.name}</p>
           </ImageHolder>
         </MenuButtonHolder>
       )}

@@ -32,12 +32,12 @@ export const MenuLink = styled.a`
   cursor: pointer;
   color: #757575;
   fill: #757575;
-  align-items:center;
+  align-items: center;
   font-size: 14px;
   background-color: none;
   & > svg {
     font-size: 24px;
-    margin-right: .5em;
+    margin-right: 0.5em;
     margin-left: 1em;
   }
 
@@ -60,17 +60,25 @@ export const MenuButtonHolder = styled.div`
   flex-direction: column;
 `;
 export const ImageHolder = styled.div`
-  display:flex;
-  align-items:center;
-  padding-block:1rem;
-  width:100%;
+  display: flex;
+  align-items: center;
+  padding-block: 1rem;
+  width: 100%;
   cursor: pointer;
-  border-top:1px solid #d4d4d4;
-  &>p{
-    font-size:14px;
-    margin-left:.75em;
+  border-top: 1px solid #d4d4d4;
+  & > p {
+    font-size: 14px;
+    margin-left: 0.75em;
   }
-`
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-left: 1.25rem;
+  }
+`;
 export const LogoutButton = styled.button`
   outline: none;
   border: none;
@@ -85,7 +93,7 @@ export const LogoutButton = styled.button`
   background-color: white;
   cursor: pointer;
   & > svg {
-    margin-right: .5em;
+    margin-right: 0.5em;
     margin-left: 1em;
     font-size: 24px;
   }

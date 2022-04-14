@@ -6,9 +6,11 @@ import {
   NameHolder,
   RedirectionButton,
 } from "./ThankYouScreenElements";
+import { useRouter } from "next/router";
 
 const ThankYouScreen = ({ customerName }) => {
-  var duration = 15 * 1000;
+  const router = useRouter();
+  var duration = 10 * 1000;
   var animationEnd = Date.now() + duration;
   var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
 
@@ -46,7 +48,7 @@ const ThankYouScreen = ({ customerName }) => {
         Your payment is successful. A copy of your receipt has been sent to your
         email.
       </NameHolder>
-      <RedirectionButton>Return Home</RedirectionButton>
+      <RedirectionButton onClick={()=>{router.replace("/")}}>Return Home</RedirectionButton>
     </Container>
   );
 };

@@ -8,6 +8,8 @@ import User from "../models/User";
 import dynamic from "next/dynamic";
 import HomeScreen from "../components/HomeScreen";
 import Navbar from "../components/Navbar";
+import { useEffect } from "react";
+import { useUserContext } from "./Contexts/UserContext";
 
 const PromoHomeScreen = dynamic(() => import("../components/PromoHomeScreen"), {
   ssr: false,
@@ -20,6 +22,11 @@ const Footer = dynamic(() => import("../components/Footer"), {
 });
 
 export default function Home({ email, name, image }) {
+  const { user, userUpdater } = useUserContext();
+  const userInfo = { name: name, email: email, image: image };
+  useEffect(() => {
+    userUpdater(userInfo);
+  }, []);
   return (
     <div className={styles.container}>
       <Head>

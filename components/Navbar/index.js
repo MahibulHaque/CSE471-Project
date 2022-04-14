@@ -9,8 +9,12 @@ import {
 import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
+import { useUserContext } from "../../pages/Contexts/UserContext";
 
-const Navbar = ({ whiteBar, email, name, image }) => {
+const Navbar = ({ whiteBar }) => {
+  const { user } = useUserContext();
+
+  console.log(user?.name);
   return (
     <>
       <Container whiteBar={whiteBar}>
@@ -43,7 +47,7 @@ const Navbar = ({ whiteBar, email, name, image }) => {
           </Link>
           <NavLinks whiteBar={whiteBar}>Contact Us</NavLinks>
         </div>
-        {!name && (
+        {!user?.name && (
           <div>
             <Link href="/login">
               <NavButtons
@@ -64,7 +68,7 @@ const Navbar = ({ whiteBar, email, name, image }) => {
             </Link>
           </div>
         )}
-        {name && (
+        {user?.name && (
           <NavbarDashContainer>
             <Link href="/dashboard">
               <DashboardButton>Dashboard</DashboardButton>
@@ -81,7 +85,12 @@ const Navbar = ({ whiteBar, email, name, image }) => {
                 overflow: "hidden",
               }}
             >
-              <Image width={35} height={35} alt="Picture of user" src={image} />
+              <Image
+                width={35}
+                height={35}
+                alt="Picture of user"
+                src={user?.image}
+              />
             </div>
           </NavbarDashContainer>
         )}

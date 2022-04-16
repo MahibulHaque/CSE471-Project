@@ -172,7 +172,9 @@ export const SubmitButton = styled.button`
   margin-block: 1em;
   padding-block: 0.75em;
   cursor: pointer;
-
+  &:disabled{
+    cursor: not-allowed;
+  }
   &:hover {
     background-color: #4338ca;
   }

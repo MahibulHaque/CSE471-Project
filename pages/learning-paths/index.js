@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import LearningPaths from "../../components/LearningPathsScreen";
 import DashboardMenu from "../../components/DashboardMenu";
-import { useUserContext } from "../Contexts/UserContext";
+import { useUserContext } from "../../Contexts/UserContext";
 import { getCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
 import User from "../../models/User";

@@ -11,6 +11,7 @@ export const Container = styled.nav`
   box-shadow: rgb(0 0 0/10%) 0 1px 1px 1px, rgb(0 0 0/10%) 0 -1px 1px 1px;
   z-index: 2;
   position: sticky;
+  background-color: ${({ whiteBar }) => (whiteBar ? "white" : "#1f1f1f")};
 `;
 
 export const Logo = styled.img`

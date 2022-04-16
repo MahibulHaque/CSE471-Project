@@ -9,7 +9,7 @@ import dynamic from "next/dynamic";
 import HomeScreen from "../components/HomeScreen";
 import Navbar from "../components/Navbar";
 import { useEffect } from "react";
-import { useUserContext } from "./Contexts/UserContext";
+import { useUserContext } from "../Contexts/UserContext";
 
 const PromoHomeScreen = dynamic(() => import("../components/PromoHomeScreen"), {
   ssr: false,
@@ -22,7 +22,7 @@ const Footer = dynamic(() => import("../components/Footer"), {
 });
 
 export default function Home({ email, name, image }) {
-  const { user, userUpdater } = useUserContext();
+  const { userUpdater } = useUserContext();
   const userInfo = { name: name, email: email, image: image };
   useEffect(() => {
     userUpdater(userInfo);
@@ -65,7 +65,7 @@ export async function getServerSideProps({ req, res }) {
         return {
           props: {
             email: obj.email,
-            name: obj.name,
+            name: obj.username,
             image: obj.imageUrl,
           },
         };

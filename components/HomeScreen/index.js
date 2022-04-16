@@ -111,6 +111,8 @@ const HomeScreen = () => {
               handleBlur,
               handleSubmit,
               isSubmitting,
+              isValid,
+              dirty
             }) => (
               <Form autoComplete="off" onSubmit={handleSubmit}>
                 <Label htmlFor="Name">Name</Label>
@@ -208,7 +210,7 @@ const HomeScreen = () => {
                     {errors.Password}
                   </div>
                 )}
-                <SubmitButton type="submit" disabled={isSubmitting}>Let's go!</SubmitButton>
+                <SubmitButton type="submit" disabled={!(isValid && dirty)}>Let's go!</SubmitButton>
               </Form>
             )}
           </Formik>

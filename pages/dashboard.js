@@ -6,7 +6,7 @@ import User from "../models/User";
 import dynamic from "next/dynamic";
 import DashBoardScreen from "../components/DashBoardScreen";
 import Head from "next/head";
-import { useUserContext } from "./Contexts/UserContext";
+import { useUserContext } from "../Contexts/UserContext";
 
 const Navbar = dynamic(() => import("../components/Navbar"));
 
@@ -48,7 +48,7 @@ export async function getServerSideProps({ req, res }) {
     return {
       props: {
         email: obj.email,
-        name: obj.name,
+        name: obj.username,
         image: obj.imageUrl,
       },
     };

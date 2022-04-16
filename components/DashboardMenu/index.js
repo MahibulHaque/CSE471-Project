@@ -20,7 +20,7 @@ import {
 } from "react-icons/ai";
 import { useRouter } from "next/router";
 import Image from "next/image";
-import { useUserContext } from "../../pages/Contexts/UserContext";
+import { useUserContext } from "../../Contexts/UserContext";
 
 const DashboardMenu = () => {
   const { user } = useUserContext();

@@ -4,7 +4,8 @@ import "../styles/nprogress.css";
 import nProgress from "nprogress";
 import Router from "next/router";
 import "../styles/globals.css";
-import UserContextProvider from "./Contexts/UserContext";
+import UserContextProvider from "../Contexts/UserContext";
+import CourseContextProvider from "../Contexts/CourseDetailContext";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -41,7 +42,9 @@ export default function App({
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>
           <UserContextProvider>
-            <Component {...pageProps} />
+            <CourseContextProvider>
+              <Component {...pageProps} />
+            </CourseContextProvider>
           </UserContextProvider>
         </SessionProvider>
       </ThemeProvider>

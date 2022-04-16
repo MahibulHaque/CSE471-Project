@@ -9,12 +9,10 @@ import {
 import Link from "next/link";
 import { FaRegBell } from "react-icons/fa";
 import Image from "next/image";
-import { useUserContext } from "../../pages/Contexts/UserContext";
+import { useUserContext } from "../../Contexts/UserContext";
 
 const Navbar = ({ whiteBar }) => {
   const { user } = useUserContext();
-
-  console.log(user?.name);
   return (
     <>
       <Container whiteBar={whiteBar}>

@@ -16,6 +16,7 @@ module.exports = {
       "avatars.githubusercontent.com",
       "images.weserv.nl",
       "codedamn.com",
+      "res.cloudinary.com"
     ],
     formats: ["image/webp"],
   },

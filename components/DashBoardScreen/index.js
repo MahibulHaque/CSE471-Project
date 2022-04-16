@@ -21,14 +21,16 @@ import {
   Wrapper,
 } from "./DashBoardElement";
 import { LinearProgress, linearProgressClasses, styled } from "@mui/material";
-import {FaArrowRight} from 'react-icons/fa'
+import { FaArrowRight } from "react-icons/fa";
+import { useUserContext } from "../../Contexts/UserContext";
 
-const DashBoardScreen = ({name,image}) => {
+const DashBoardScreen = () => {
+  const { user } = useUserContext();
   const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 20,
     borderRadius: 10,
-    display:"flex",
-    flexGrow:.95,
+    display: "flex",
+    flexGrow: 0.95,
     [`&.${linearProgressClasses.colorPrimary}`]: {
       backgroundColor:
         theme.palette.grey[theme.palette.mode === "light" ? 200 : 800],
@@ -42,10 +44,10 @@ const DashBoardScreen = ({name,image}) => {
   const percentage = 16;
   return (
     <Container>
-      <DashboardMenu name={name} image={image}/>
+      <DashboardMenu />
       <MainContainer>
         <Topbar>
-          <HeaderTag>Good evening, Mahibul.</HeaderTag>
+          <HeaderTag>Good evening, {user?.name}.</HeaderTag>
           <IconContainer>
             <FaMoon />
           </IconContainer>
@@ -113,10 +115,17 @@ const DashBoardScreen = ({name,image}) => {
               </ProgressP>
               <Levelbar>
                 <span>Lvl. 8</span>
-                <BorderLinearProgress variant="determinate" value={60} className="progressBar"/>
+                <BorderLinearProgress
+                  variant="determinate"
+                  value={60}
+                  className="progressBar"
+                />
                 <span>Lvl. 9</span>
               </Levelbar>
-              <LeaderBoardLink href="/ranks?filter=allTime">See Leaderboard<FaArrowRight/></LeaderBoardLink>
+              <LeaderBoardLink href="/ranks?filter=allTime">
+                See Leaderboard
+                <FaArrowRight />
+              </LeaderBoardLink>
             </ProgressContainer>
             <GoalContainer></GoalContainer>
           </MainSection>

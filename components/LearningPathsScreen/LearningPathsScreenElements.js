@@ -54,6 +54,8 @@ export const FeaturedPathCard = styled.div`
   padding-top: 20px;
   width: 100%;
   border: 1px solid #d4d4d4;
+  cursor: pointer;
+
 
   border-radius: 0.5rem;
 
@@ -67,6 +69,7 @@ export const FeaturedPathCard = styled.div`
     border: none;
     outline: none;
     text-align: left;
+    cursor: pointer;
   }
 
   & .featured__path_content_container {

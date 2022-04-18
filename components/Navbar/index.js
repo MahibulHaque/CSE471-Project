@@ -33,21 +33,21 @@ const Navbar = ({ whiteBar }) => {
           />
         )}
         <div>
-          <Link href="/">
+          <Link href="/" passHref>
             <NavLinks whiteBar={whiteBar}>Start Learning</NavLinks>
           </Link>
-          <Link href="/learning-paths">
+          <Link href="/learning-paths" passHref>
             <NavLinks whiteBar={whiteBar}>Learning Paths</NavLinks>
           </Link>
 
-          <Link href="/pricing">
+          <Link href="/pricing" passHref>
             <NavLinks whiteBar={whiteBar}>Pricing</NavLinks>
           </Link>
           <NavLinks whiteBar={whiteBar}>Contact Us</NavLinks>
         </div>
         {!user?.name && (
           <div>
-            <Link href="/login">
+            <Link href="/login" passHref>
               <NavButtons
                 variant="outlined"
                 color="primary"
@@ -56,7 +56,7 @@ const Navbar = ({ whiteBar }) => {
                 Sign in
               </NavButtons>
             </Link>
-            <Link href="/register">
+            <Link href="/register" passHref>
               <NavButtons
                 variant="contained"
                 style={{ marginLeft: "1.5rem", textTransform: "capitalize" }}
@@ -68,7 +68,7 @@ const Navbar = ({ whiteBar }) => {
         )}
         {user?.name && (
           <NavbarDashContainer>
-            <Link href="/dashboard">
+            <Link href="/dashboard" passHref>
               <DashboardButton>Dashboard</DashboardButton>
             </Link>
             <NotificationButton whiteBar={whiteBar}>

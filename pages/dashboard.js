@@ -14,7 +14,7 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
   loading: () => <div />,
 });
-const dashboard = ({ email, name, image }) => {
+const Dashboard = ({ email, name, image }) => {
   const { userUpdater } = useUserContext();
   const userInfo = { name: name, email: email, image: image };
 
@@ -42,7 +42,7 @@ export async function getServerSideProps({ req, res }) {
     if (!token) {
       return { redirect: { destination: "/login" } };
     }
-    const verified = await jwt.verify(token, process.env.JWT_SECRET);
+    const verified = jwt.verify(token, process.env.JWT_SECRET);
     const obj = await User.findOne({ _id: verified.id });
     if (!obj) return { redirect: { destination: "/register" } };
     return {
@@ -58,4 +58,4 @@ export async function getServerSideProps({ req, res }) {
   }
 }
 
-export default dashboard;
+export default Dashboard;

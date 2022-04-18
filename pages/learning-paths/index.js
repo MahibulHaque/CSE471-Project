@@ -16,7 +16,7 @@ const Footer = dynamic(() => import("../../components/Footer"), {
   loading: () => <div />,
 });
 
-const learningPaths = ({ name, email, image }) => {
+const LearningPathsPage = ({ name, email, image }) => {
   const userInfo = { name: name, email: email, image: image };
   const { userUpdater } = useUserContext();
   useEffect(() => {
@@ -34,7 +34,7 @@ const learningPaths = ({ name, email, image }) => {
   );
 };
 
-export default learningPaths;
+export default LearningPathsPage;
 
 const Wrapper = styled.div`
   display: flex;

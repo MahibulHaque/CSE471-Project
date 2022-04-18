@@ -48,7 +48,13 @@ const ThankYouScreen = ({ customerName }) => {
         Your payment is successful. A copy of your receipt has been sent to your
         email.
       </NameHolder>
-      <RedirectionButton onClick={()=>{router.replace("/")}}>Return Home</RedirectionButton>
+      <RedirectionButton
+        onClick={() => {
+          router.replace("/");
+        }}
+      >
+        Return Home
+      </RedirectionButton>
     </Container>
   );
 };

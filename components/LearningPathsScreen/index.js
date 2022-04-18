@@ -10,6 +10,7 @@ import {
   TextContainer,
 } from "./LearningPathsScreenElements";
 import { FaStar } from "react-icons/fa";
+import Link from "next/link";
 const LearningPaths = () => {
   return (
     <Container>
@@ -36,11 +37,11 @@ const LearningPaths = () => {
               <div>
                 <span>4.9</span>
                 <div>
-                  <FaStar style={{fill:"#eb8a2f"}}/>
-                  <FaStar style={{fill:"#eb8a2f"}}/>
-                  <FaStar style={{fill:"#eb8a2f"}}/>
-                  <FaStar style={{fill:"#eb8a2f"}}/>
-                  <FaStar style={{fill:"#eb8a2f"}}/>
+                  <FaStar style={{ fill: "#eb8a2f" }} />
+                  <FaStar style={{ fill: "#eb8a2f" }} />
+                  <FaStar style={{ fill: "#eb8a2f" }} />
+                  <FaStar style={{ fill: "#eb8a2f" }} />
+                  <FaStar style={{ fill: "#eb8a2f" }} />
                 </div>
                 <p>750+ ratings</p>
                 <p>2k students enrolled</p>
@@ -58,11 +59,13 @@ const LearningPaths = () => {
       <AllLearningPathContainer>
         <h1>ALL LEARNING PATHS</h1>
         <CardContainer>
-          <Card>
-            <h3>ROS For Beginners</h3>
-            <p>The must-have learning path for ROS & Robotics beginners.</p>
-            <div>Start Learning</div>
-          </Card>
+          <Link href="/learning-paths/ros-for-beginners">
+            <Card>
+              <h3>ROS For Beginners</h3>
+              <p>The must-have learning path for ROS & Robotics beginners.</p>
+              <div>Start Learning</div>
+            </Card>
+          </Link>
           <Card>
             <h3>Robot Navigation</h3>
             <p>
@@ -74,14 +77,6 @@ const LearningPaths = () => {
           <Card>
             <h3>Machine Learning for Robots</h3>
             <p>Machine Learning for Robots</p>
-            <div>Start Learning</div>
-          </Card>
-          <Card>
-            <h3>ROS 2 Basics(Python)</h3>
-            <p>
-              Learn the fundamentals of ROS2 to understand and be able to
-              program robots
-            </p>
             <div>Start Learning</div>
           </Card>
         </CardContainer>

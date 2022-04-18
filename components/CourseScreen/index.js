@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { FaCheck } from "react-icons/fa";
 import { MdExpandMore } from "react-icons/md";
-import {RiVideoLine} from "react-icons/ri"
+import { RiVideoLine } from "react-icons/ri";
 import { useCourseContext } from "../../Contexts/CourseDetailContext";
 import {
   CardList,
@@ -40,8 +40,8 @@ const CardHeaderStyled = styled(CardHeader)(({ theme }) => ({
   // color: theme.palette.success.main,
   "& .MuiCardHeader-title": {
     fontSize: "18px",
-    fontWeight:700,
-    fontFamily:"Inter",
+    fontWeight: 700,
+    fontFamily: "Inter",
   },
 }));
 
@@ -60,20 +60,22 @@ const CourseScreen = () => {
             <HeroContainerWrapper>
               <HeroTextContainer>
                 <h1>{courseDetail.courseTitle}</h1>
-                <p>{courseDetail.courseDesc}</p>
+                <p>{courseDetail.courseSmallDesc}</p>
+                <div className={`${courseDetail.courseType == "Free" ? "free" : ""}`}>
+                  <span></span>{courseDetail.courseType}
+                </div>
+                <button>Start your course</button>
               </HeroTextContainer>
               <HeroButtonContainer>
-                <Image src={courseDetail.imageUrl} width={389} height={219} />
-                <h1>{courseDetail.courseType}</h1>
-                <button>Start your course</button>
+                <Image src={courseDetail.imageUrl} width={389} height={219} alt="course-hero-image"/>
               </HeroButtonContainer>
             </HeroContainerWrapper>
           </HeroContainer>
           <Wrapper>
             <GoalsContainer>
               <h1>Goals</h1>
-              {courseDetail.courseGoals.map((goal) => (
-                <ul>
+              {courseDetail.courseGoals.map((goal,index) => (
+                <ul key={index}>
                   <li>
                     <FaCheck style={{ fill: "#2ebc4f" }} />
                     {goal}
@@ -92,7 +94,11 @@ const CourseScreen = () => {
                 <Card sx={{ maxWidth: 400 }} key={i}>
                   <CardActions
                     disableSpacing
-                    style={{ display: "flex", justifyContent: "space-between",backgroundColor:"#f5f5f5" }}
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      backgroundColor: "#f5f5f5",
+                    }}
                   >
                     <CardHeaderStyled title={unit.title} />
                     <ExpandMore
@@ -106,10 +112,18 @@ const CourseScreen = () => {
                   </CardActions>
                   <Collapse in={expandedId === i} timeout="auto" unmountOnExit>
                     <CardContent>
-                      <Typography style={{fontSize:"16px",fontFamily:"Inter",color:"black"}}>{unit?.unitDesc}</Typography>
-                      <CardList>
+                      <Typography
+                        style={{
+                          fontSize: "16px",
+                          fontFamily: "Inter",
+                          color: "black",
+                        }}
+                      >
+                        {unit?.unitDesc}
+                      </Typography>
+                      <CardList key={i}>
                         {unit?.unitTopics?.map((topic, j) => (
-                          <li>
+                          <li key={j}>
                             <RiVideoLine />
                             {topic}
                           </li>

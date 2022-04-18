@@ -7,7 +7,7 @@ import { getCookie } from "cookies-next";
 import User from "../models/User";
 const Navbar = dynamic(() => import("../components/Navbar"));
 const Footer = dynamic(() => import("../components/Footer"));
-const pricing = ({ name, email, image }) => {
+const Pricing = ({ name, email, image }) => {
   const { userUpdater } = useUserContext();
   const userInfo = { name: name, email: email, image: image };
   useEffect(() => {
@@ -21,7 +21,7 @@ const pricing = ({ name, email, image }) => {
     </>
   );
 };
-export default pricing;
+export default Pricing;
 export async function getServerSideProps({ req, res }) {
   try {
     const token = getCookie("user-token", { req, res });

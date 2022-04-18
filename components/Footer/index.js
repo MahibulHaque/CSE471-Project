@@ -26,6 +26,7 @@ const Footer = () => {
               width={69.280575}
               height={60}
               src="/images/logo-mark-white.png"
+              alt="logo-white"
             />
             <p>
               Learn robotics interactively - without ever leaving your browser.

@@ -15,7 +15,7 @@ const PromoHomeScreen = () => {
     <Wrapper>
       <Container>
         <IconContainer>
-          <Image src="/images/star.svg" width={32} height={32} />
+          <Image src="/images/star.svg" width={32} height={32} alt="star-icon"/>
         </IconContainer>
         <SmallHeader>GET OUT OF TUTORIAL HELL</SmallHeader>
         <BigHeader>Videos are so 2008-ish...</BigHeader>

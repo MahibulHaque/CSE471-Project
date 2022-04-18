@@ -28,14 +28,62 @@ export const HeroTextContainer = styled.div`
   flex-direction: column;
   max-width: 500px;
   margin-right: 1.5rem;
+  
+  & > div {
+    margin-top:1rem;
+    font-size: 12px;
+    text-align: center;
+    background-color: #ffe4e6;
+    color: #9f1239;
+    padding-inline: 10px;
+    padding-block: 4px;
+    border-radius:16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+    max-width:fit-content;
+    & > span {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: .75em;
+      background-color: #fb7185;
+    }
+  }
+  & .free{
+    background-color:#fef9c3;
+    color:#a16207;
+
+    &>span{
+      background-color:#FDE047
+    }
+  }
   & > h1 {
     font-size: 35px;
-    margin-bottom: 1rem;
+    margin-block: 1rem;
   }
   & > p {
     font-size: 16px;
     line-height: 2rem;
-    text-align: justify;
+
+    /* text-align: justify; */
+  }
+  & > button {
+    background-color: #4f46e5;
+    border: none;
+    outline: none;
+    width: 100%;
+    margin-top: 1rem;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    padding-inline: 3rem;
+    padding-block: 0.75rem;
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    &:hover {
+      background-color: #4338ca;
+    }
   }
 `;
 
@@ -97,7 +145,7 @@ export const HeroContainerWrapper = styled.div`
   max-width: 1200px;
   width: 90%;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: wrap-reverse;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
@@ -130,21 +178,21 @@ export const CourseStructureContainer = styled.div`
     font-size: 35px;
     margin-bottom: 1rem;
   }
-
-  
 `;
 
 export const CardList = styled.ul`
-  margin-top:1rem;
-  list-style:none;
-  &>li{
-    font-size:16px;
-    font-weight:500;
-    margin-bottom:1rem;
-    display:flex;
-    align-items:center;
-    &>svg{
-      margin-right:.75rem;
+  margin-top: 1rem;
+  list-style: none;
+  & > li {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: inline-flex;
+    align-items: center;
+    & > svg {
+      margin-right: 0.75rem;
+      min-width: 18px;
+      min-height: 18px;
     }
   }
-`
+`;

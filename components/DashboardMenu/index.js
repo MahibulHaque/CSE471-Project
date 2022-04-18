@@ -44,31 +44,52 @@ const DashboardMenu = () => {
   return (
     <Container>
       <MenuLinkContainer>
-        <MenuLink className="active">
+        <MenuLink
+          href="/dashboard"
+          className={`${router.asPath === "/dashboard" ? "active" : ""}`}
+        >
           <MdSpeed />
           Dashboard
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/my-courses"
+          className={`${router.asPath === "/my-courses" ? "active" : ""}`}
+        >
           <MdLaptop />
           My Courses
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/learning-paths"
+          className={`${router.asPath === "/learning-paths" ? "active" : ""}`}
+        >
           <MdOutlineAccountTree />
           Learning Paths
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/community"
+          className={`${router.asPath === "/community" ? "active" : ""}`}
+        >
           <MdGroups />
           Community
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/projects"
+          className={`${router.asPath === "/projects" ? "active" : ""}`}
+        >
           <AiOutlineProject />
           Projects
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/events"
+          className={`${router.asPath === "/events" ? "active" : ""}`}
+        >
           <MdOutlineEmojiEvents />
           Events
         </MenuLink>
-        <MenuLink>
+        <MenuLink
+          href="/certificates"
+          className={`${router.asPath === "/certificates" ? "active" : ""}`}
+        >
           <AiOutlineSafetyCertificate />
           Your Certificates
         </MenuLink>
@@ -86,6 +107,7 @@ const DashboardMenu = () => {
                 width={30}
                 height={30}
                 style={{ marginLeft: "20px" }}
+                alt="user-profile-image"
               />
             </div>
 

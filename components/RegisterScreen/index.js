@@ -235,7 +235,7 @@ const Register = () => {
             </Form>
           )}
         </Formik>
-        <p style={{ fontSize: "14px" }}>
+        <p style={{ fontSize: "14px",marginBlock:"1rem" }}>
           Click submit details to proceed and{" "}
           <span style={{ fontWeight: "bold" }}>verify your email</span>
         </p>

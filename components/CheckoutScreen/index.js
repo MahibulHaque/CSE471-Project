@@ -172,7 +172,7 @@ const CheckoutScreen = ({ headerToken }) => {
             <button className="paymentButton" type="submit">
               Complete Order
             </button>
-            <Link href="/pricing">
+            <Link href="/pricing" passHref>
               <button className="redirectButton">Return to site</button>
             </Link>
           </ButtonContainer>

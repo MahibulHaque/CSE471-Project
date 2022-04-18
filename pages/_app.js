@@ -6,6 +6,7 @@ import Router from "next/router";
 import "../styles/globals.css";
 import UserContextProvider from "../Contexts/UserContext";
 import CourseContextProvider from "../Contexts/CourseDetailContext";
+import PathContextProvider from "../Contexts/PathDetailContext";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -42,9 +43,11 @@ export default function App({
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>
           <UserContextProvider>
-            <CourseContextProvider>
-              <Component {...pageProps} />
-            </CourseContextProvider>
+            <PathContextProvider>
+              <CourseContextProvider>
+                <Component {...pageProps} />
+              </CourseContextProvider>
+            </PathContextProvider>
           </UserContextProvider>
         </SessionProvider>
       </ThemeProvider>

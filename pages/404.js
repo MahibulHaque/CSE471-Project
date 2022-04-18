@@ -5,7 +5,7 @@ import styled from "styled-components";
 export default function FourOhFour() {
   return (
     <Container>
-      <Image src="/images/404.gify" width={386} height={558} />
+      <Image src="/images/404.gify" width={386} height={558} alt="404-image"/>
       <h1>404 Not Found</h1>
       <p>Try a learning path instead?</p>
       <button>Become a ROS Developer</button>

@@ -6,7 +6,6 @@ export default async function handler(req, res) {
     const { session_id } = req.body;
     try {
       const session = await stripe.checkout.sessions.retrieve(session_id);
-      // console.log(session.customer_details.email);
       const user = await Member.findOne({
         email: session.customer_details.email,
       });
@@ -32,8 +31,7 @@ export default async function handler(req, res) {
         proMember
           .save()
           .then((result) => {
-            console.log(result);
-            res.status(201).json({ subscription: result });
+            return res.status(201).json({ subscription: result });
           })
           .catch((error) => {
             res.statusCode(400);
@@ -42,7 +40,9 @@ export default async function handler(req, res) {
           });
       } else {
         // existing pro member;
-        res.status(200).json({ message: "User already has pro membership" });
+        return res
+          .status(201)
+          .json({ message: "User already has pro membership" });
       }
     } catch (error) {
       console.log(error);

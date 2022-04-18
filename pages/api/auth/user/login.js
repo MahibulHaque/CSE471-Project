@@ -28,15 +28,15 @@ export default async function handler(req, res) {
               sameSite: "strict",
               path: "/",
             });
-            res.status(202).json({
+            return res.status(202).json({
               message: "Login Successful",
             });
           } else {
-            res.status(200).json({ message: "Incorrect Password Provided" });
+            return res.status(200).json({ message: "Incorrect Password Provided" });
           }
         });
       } else {
-        res.status(200).json({ message: "User not found" });
+        return res.status(200).json({ message: "User not found" });
       }
     } catch (error) {
       res.json(error);

@@ -36,7 +36,8 @@ export async function getServerSideProps(req, res) {
       req.query?.session_id
     );
     const customer = await stripe.customers.retrieve(session.customer);
-    if (subscriptionDetail.status(201)) {
+    if (subscriptionDetail.status===201) {
+
       return {
         props: {
           customer,
@@ -44,6 +45,7 @@ export async function getServerSideProps(req, res) {
       };
     }
   } catch (error) {
+    console.log(error);
     return { redirect: { destination: "/" } };
   }
 }

@@ -44,7 +44,7 @@ export default async function handler(req, res) {
                     sameSite: "strict",
                     path:"/"
                   });
-                  res.status(201).json({
+                  return res.status(201).json({
                     token,
                     user: {
                       id: savedUser.id,

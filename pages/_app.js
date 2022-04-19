@@ -7,6 +7,7 @@ import "../styles/globals.css";
 import UserContextProvider from "../Contexts/UserContext";
 import CourseContextProvider from "../Contexts/CourseDetailContext";
 import PathContextProvider from "../Contexts/PathDetailContext";
+import { ToastContainer } from "react-toastify";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -40,7 +41,7 @@ export default function App({
   return (
     <>
       <GlobalStyle />
-
+      
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>
           <UserContextProvider>
@@ -52,6 +53,17 @@ export default function App({
           </UserContextProvider>
         </SessionProvider>
       </ThemeProvider>
+      <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
     </>
   );
 }

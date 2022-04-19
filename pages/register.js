@@ -6,7 +6,7 @@ const Footer = dynamic(() => import("../components/Footer"), {
   ssr: false,
   loading: () => <div />,
 });
-const register = () => {
+const RegisterPage = () => {
   return (
     <>
       <Navbar whiteBar={true} />
@@ -16,4 +16,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default RegisterPage;

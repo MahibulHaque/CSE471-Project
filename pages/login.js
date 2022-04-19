@@ -3,7 +3,7 @@ import Login from "../components/LoginScreen";
 import Footer from "../components/Footer";
 import Head from "next/head";
 const Navbar = dynamic(() => import("../components/Navbar"));
-const login = () => {
+const LoginPage = () => {
   return (
     <>
       <Head>
@@ -18,4 +18,4 @@ const login = () => {
   );
 };
 
-export default login;
+export default LoginPage;

@@ -14,11 +14,11 @@ const Pricing = ({ name, email, image }) => {
     userUpdater(userInfo);
   }, []);
   return (
-    <>
+    <div>
       <Navbar whiteBar={true} />
       <PricingScreen />
       <Footer />
-    </>
+    </div>
   );
 };
 export default Pricing;

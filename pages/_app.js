@@ -8,6 +8,7 @@ import UserContextProvider from "../Contexts/UserContext";
 import CourseContextProvider from "../Contexts/CourseDetailContext";
 import PathContextProvider from "../Contexts/PathDetailContext";
 import { ToastContainer } from "react-toastify";
+import ProjectDetailContextProvider from "../Contexts/ProjectDetailContext";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -41,29 +42,31 @@ export default function App({
   return (
     <>
       <GlobalStyle />
-      
+
       <ThemeProvider theme={theme}>
         <SessionProvider session={session}>
           <UserContextProvider>
             <PathContextProvider>
-              <CourseContextProvider>
-                <Component {...pageProps} />
-              </CourseContextProvider>
+              <ProjectDetailContextProvider>
+                <CourseContextProvider>
+                  <Component {...pageProps} />
+                </CourseContextProvider>
+              </ProjectDetailContextProvider>
             </PathContextProvider>
           </UserContextProvider>
         </SessionProvider>
       </ThemeProvider>
       <ToastContainer
-          position="bottom-right"
-          autoClose={2000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
+        position="bottom-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </>
   );
 }

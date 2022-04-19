@@ -21,7 +21,7 @@ export const TextContainer = styled.div`
   max-width: 400px;
 `;
 export const HomeHeaderTag = styled.h1`
-  font-size: clamp(40px, 6vw, 65px);
+  font-size: clamp(40px, 6vw, 60px);
   font-weight: 800;
   color: white;
   margin-bottom: 0.5rem;
@@ -39,7 +39,7 @@ export const HomeSubTag = styled.p`
   width: 100%;
   font-size: clamp(14px, 3.5vw, 20px);
   color: #d4d4d4;
-  margin-block:2rem;
+  margin-block: 2rem;
 `;
 
 export const HomeExploreButton = styled.button`
@@ -73,7 +73,7 @@ export const FormContainer = styled.div`
 `;
 export const FormHeader = styled.h1`
   width: 90%;
-  margin-block:2ch;
+  margin-block: 2ch;
   text-align: ${({ whiteForm }) => (whiteForm ? "center" : "")};
   font-size: ${({ whiteForm }) => (whiteForm ? "30px" : "16px")};
   color: ${({ whiteForm }) => (whiteForm ? "black" : "#d4d4d4")};
@@ -145,7 +145,7 @@ export const InputField = styled.input`
   font-weight: 400;
   padding-block: 0.75em;
   padding-inline: 0.5em;
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
   color: ${({ whiteForm }) => (whiteForm ? "#757575" : "#d4d4d4")};
 
   &:focus-within {
@@ -172,7 +172,7 @@ export const SubmitButton = styled.button`
   margin-block: 1em;
   padding-block: 0.75em;
   cursor: pointer;
-  &:disabled{
+  &:disabled {
     cursor: not-allowed;
   }
   &:hover {
@@ -196,4 +196,18 @@ export const StrengthIndicator = styled.div`
   & .medium {
     margin: 0 3px;
   }
+`;
+
+export const HeroImageHolder = styled.div`
+  border-radius: 1.25rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  -webkit-box-align: center;
+  border: 3px solid rgba(249, 249, 249, 0.8);
+  border-radius: 2rem;
+  box-shadow: rgb(0 0 0 / 80%) 0px 40px 58px -16px,
+    rgb(0 0 0 / 72%) 0px 30px 22px -10px;
 `;

@@ -19,6 +19,13 @@ import styled from "styled-components";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import AlertComponent from "../AlertComponent";
+import { toast } from "react-toastify";
+import { injectStyle } from "react-toastify/dist/inject-style";
+
+if (typeof window !== "undefined") {
+  injectStyle();
+}
+
 const Register = () => {
   const router = useRouter();
 
@@ -108,7 +115,18 @@ const Register = () => {
               .then((res) => {
                 console.log(res);
                 if (res.status === 201) {
-                  router.push("/dashboard");
+                  toast.success(`${res.data.message}`, {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    onClose: function () {
+                      console.log("yes");
+                      router.push("/dashboard")
+                    },
+                  });
                 }
               })
               .catch((err) => {

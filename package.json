@@ -34,7 +34,6 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
-    "@material-ui/core": "^4.12.3",
     "babel-plugin-styled-components": "^2.0.6",
     "eslint": "8.10.0",
     "eslint-config-next": "12.1.0",

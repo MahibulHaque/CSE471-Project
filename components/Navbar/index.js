@@ -11,6 +11,7 @@ import {
   NavMenu,
   NavMenuLinkContainer,
   NavMenuLink,
+  Logo,
 } from "./NavbarElements";
 import Link from "next/link";
 import {
@@ -32,22 +33,24 @@ const Navbar = ({ whiteBar }) => {
   return (
     <NavWrapper whiteBar={whiteBar}>
       <Container whiteBar={whiteBar}>
-        {!whiteBar && (
-          <Image
-            width={123.033}
-            height={36}
-            src="/images/logo-white.svg"
-            alt="Open Robotics logo"
-          />
-        )}
-        {whiteBar && (
-          <Image
-            width={123.033}
-            height={36}
-            src="/images/logo-black-01.svg"
-            alt="Open Robotics logo"
-          />
-        )}
+        <Logo>
+          {!whiteBar && (
+            <Image
+              width={123.033}
+              height={36}
+              src="/images/logo-white.svg"
+              alt="Open Robotics logo"
+            />
+          )}
+          {whiteBar && (
+            <Image
+              width={123.033}
+              height={36}
+              src="/images/logo-black-01.svg"
+              alt="Open Robotics logo"
+            />
+          )}
+        </Logo>
         <div>
           <Link href="/" passHref>
             <NavLinks whiteBar={whiteBar}>Start Learning</NavLinks>
@@ -62,24 +65,25 @@ const Navbar = ({ whiteBar }) => {
           <NavLinks whiteBar={whiteBar}>Contact Us</NavLinks>
         </div>
         {!user?.name && (
-          <div>
+          <div style={{ display: "flex", alignItems:"center" }}>
             <Link href="/login" passHref>
-              <NavButtons
-                variant="outlined"
-                color="primary"
-                style={{ textTransform: "capitalize" }}
-              >
+              <NavButtons whiteBar={whiteBar} style={{ background: "none" }}>
                 Sign in
               </NavButtons>
             </Link>
             <Link href="/register" passHref>
-              <NavButtons
-                variant="contained"
-                style={{ marginLeft: "1.5rem", textTransform: "capitalize" }}
-              >
+              <NavButtons whiteBar={whiteBar} style={{ color: "white" }}>
                 register
               </NavButtons>
             </Link>
+            <MenuButton
+              whiteBar={whiteBar}
+              onClick={() => {
+                setMenuOpen((prev) => !prev);
+              }}
+            >
+              {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+            </MenuButton>
           </div>
         )}
         {user?.name && (

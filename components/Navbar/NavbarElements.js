@@ -1,4 +1,3 @@
-import { Button } from "@material-ui/core";
 import styled from "styled-components";
 
 export const NavWrapper = styled.nav`
@@ -11,8 +10,8 @@ export const NavWrapper = styled.nav`
   background-color: ${({ whiteBar }) => (whiteBar ? "white" : "#1f1f1f")};
   color: ${({ theme }) => theme.colors.white};
   transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
-  position:sticky;
-  z-index:100;
+  position: sticky;
+  z-index: 100;
 `;
 
 export const Container = styled.div`
@@ -24,9 +23,8 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Logo = styled.img`
-  height: 80%;
-  width: auto;
+export const Logo = styled.div`
+  /* flex-grow: 1; */
 `;
 
 export const NavLinks = styled.a`
@@ -43,7 +41,30 @@ export const NavLinks = styled.a`
     display: none;
   }
 `;
-export const NavButtons = styled(Button)``;
+export const NavButtons = styled.button`
+  transition: all 250ms cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s;
+  cursor: pointer;
+  border-radius: 0.25em;
+  font-size: 16px;
+  display: block;
+  margin-right: 0.5rem;
+  padding-inline: 1rem;
+  padding-block: .7rem;
+  border: none;
+  outline: none;
+  text-transform: capitalize;
+  background-color: #757575;
+  color: ${({ whiteBar }) => (whiteBar ? "black" : "white")};
+
+  &:hover{
+    background-color: #383838;
+    
+  }
+
+  @media screen and (max-width: 1024px) {
+    display:none;
+  }
+`;
 
 export const NavbarDashContainer = styled.div`
   display: flex;

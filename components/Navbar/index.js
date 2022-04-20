@@ -5,16 +5,32 @@ import {
   DashboardButton,
   NotificationButton,
   NavLinks,
+  NavWrapper,
+  MenuButton,
+  NavMenuContainer,
+  NavMenu,
+  NavMenuLinkContainer,
+  NavMenuLink,
 } from "./NavbarElements";
 import Link from "next/link";
-import { FaRegBell } from "react-icons/fa";
+import {
+  FaRegBell,
+  FaMap,
+  FaCreditCard,
+  FaLaptop,
+  FaGlobe,
+} from "react-icons/fa";
+import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { HiBeaker } from "react-icons/hi";
 import Image from "next/image";
 import { useUserContext } from "../../Contexts/UserContext";
+import { useState } from "react";
 
 const Navbar = ({ whiteBar }) => {
   const { user } = useUserContext();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <>
+    <NavWrapper whiteBar={whiteBar}>
       <Container whiteBar={whiteBar}>
         {!whiteBar && (
           <Image
@@ -90,10 +106,49 @@ const Navbar = ({ whiteBar }) => {
                 src={user?.image}
               />
             </div>
+            <MenuButton
+              whiteBar={whiteBar}
+              onClick={() => {
+                setMenuOpen((prev) => !prev);
+              }}
+            >
+              {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+            </MenuButton>
           </NavbarDashContainer>
         )}
       </Container>
-    </>
+      {menuOpen && (
+        <NavMenuContainer whiteBar={whiteBar}>
+          <NavMenu whiteBar={whiteBar}>
+            <NavMenuLinkContainer whiteBar={whiteBar}>
+              <NavMenuLink whiteBar={whiteBar} href="/learning-paths">
+                <FaMap />
+                Learning Paths
+              </NavMenuLink>
+              <NavMenuLink whiteBar={whiteBar} href="/courses">
+                <FaLaptop />
+                Courses
+              </NavMenuLink>
+              <NavMenuLink whiteBar={whiteBar} href="/pricing">
+                <FaCreditCard />
+                Pricing
+              </NavMenuLink>
+              <NavMenuLink whiteBar={whiteBar} href="/projects">
+                <HiBeaker />
+                Build a Project
+              </NavMenuLink>
+              <NavMenuLink whiteBar={whiteBar} href="/contact">
+                <FaGlobe />
+                Contact Us
+              </NavMenuLink>
+            </NavMenuLinkContainer>
+            <Link href="/dashboard" passHref>
+              <button>Dashboard</button>
+            </Link>
+          </NavMenu>
+        </NavMenuContainer>
+      )}
+    </NavWrapper>
   );
 };
 

@@ -46,49 +46,53 @@ const DashboardMenu = () => {
       <MenuLinkContainer>
         <MenuLink
           href="/dashboard"
-          className={`${router.asPath === "/dashboard" ? "active" : ""}`}
+          className={`${router.asPath.includes("dashboard") ? "active" : ""}`}
         >
           <MdSpeed />
           Dashboard
         </MenuLink>
         <MenuLink
-          href="/my-courses"
-          className={`${router.asPath === "/my-courses" ? "active" : ""}`}
+          href="/courses/view"
+          className={`${router.asPath.includes("courses") ? "active" : ""}`}
         >
           <MdLaptop />
           My Courses
         </MenuLink>
         <MenuLink
           href="/learning-paths"
-          className={`${router.asPath === "/learning-paths" ? "active" : ""}`}
+          className={`${
+            router.asPath.includes("learning-paths") ? "active" : ""
+          }`}
         >
           <MdOutlineAccountTree />
           Learning Paths
         </MenuLink>
         <MenuLink
           href="/community"
-          className={`${router.asPath === "/community" ? "active" : ""}`}
+          className={`${router.asPath.includes("community") ? "active" : ""}`}
         >
           <MdGroups />
           Community
         </MenuLink>
         <MenuLink
           href="/projects"
-          className={`${router.asPath === "/projects" ? "active" : ""}`}
+          className={`${router.asPath.includes("projects") ? "active" : ""}`}
         >
           <AiOutlineProject />
           Projects
         </MenuLink>
         <MenuLink
           href="/events"
-          className={`${router.asPath === "/events" ? "active" : ""}`}
+          className={`${router.asPath.includes("events") ? "active" : ""}`}
         >
           <MdOutlineEmojiEvents />
           Events
         </MenuLink>
         <MenuLink
           href="/certificates"
-          className={`${router.asPath === "/certificates" ? "active" : ""}`}
+          className={`${
+            router.asPath.includes("certificates") ? "active" : ""
+          }`}
         >
           <AiOutlineSafetyCertificate />
           Your Certificates

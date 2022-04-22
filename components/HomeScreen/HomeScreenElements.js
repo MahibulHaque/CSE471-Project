@@ -1,6 +1,4 @@
 import styled from "styled-components";
-import { Button } from "@material-ui/core";
-import { FaGoogle } from "react-icons";
 
 export const Container = styled.div`
   width: 100%;

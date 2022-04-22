@@ -59,26 +59,30 @@ const LearningPaths = () => {
       <AllLearningPathContainer>
         <h1>ALL LEARNING PATHS</h1>
         <CardContainer>
-          <Link href="/learning-paths/ros-for-beginners">
+          <Link href="/learning-paths/ros-for-beginners" passHref>
             <Card>
               <h3>ROS For Beginners</h3>
               <p>The must-have learning path for ROS & Robotics beginners.</p>
               <div>Start Learning</div>
             </Card>
           </Link>
-          <Card>
-            <h3>Robot Navigation</h3>
-            <p>
-              Make your robot navigate autonomously and understand how to build
-              all the things.
-            </p>
-            <div>Start Learning</div>
-          </Card>
-          <Card>
-            <h3>Machine Learning for Robots</h3>
-            <p>Machine Learning for Robots</p>
-            <div>Start Learning</div>
-          </Card>
+          <Link href="/learning-paths/robot-navigation" passHref>
+            <Card>
+              <h3>Robot Navigation</h3>
+              <p>
+                Make your robot navigate autonomously and understand how to
+                build all the things.
+              </p>
+              <div>Start Learning</div>
+            </Card>
+          </Link>
+          <Link href="/learning-paths/machine-learning-for-robots">
+            <Card>
+              <h3>Machine Learning for Robots</h3>
+              <p>Machine Learning for Robots</p>
+              <div>Start Learning</div>
+            </Card>
+          </Link>
         </CardContainer>
       </AllLearningPathContainer>
     </Container>

@@ -7,6 +7,7 @@ export const Container = styled.div`
   align-items: center;
   /* justify-content:center; */
   background-color: #fafafa;
+  margin-bottom:4rem;
 `;
 
 export const TextContainer = styled.div`

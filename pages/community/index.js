@@ -3,31 +3,27 @@ import jwt from "jsonwebtoken";
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useProjectContext } from "../../Contexts/ProjectDetailContext";
 import { useUserContext } from "../../Contexts/UserContext";
-import Project from "../../models/Project";
-import ProjectScreen from "../../components/ProjectScreen";
 import User from "../../models/User";
+import CommunityScreen from "../../components/CommunityScreen";
 const Navbar = dynamic(() => import("../../components/Navbar"));
 const DashboardMenu = dynamic(() => import("../../components/DashboardMenu"), {
   ssr: false,
   loading: () => <div />,
 });
 const Footer = dynamic(() => import("../../components/Footer"));
-const ProjectPage = ({ name, email, image, projectInfo }) => {
+const CommunityPage = ({ name, email, image }) => {
   const { userUpdater } = useUserContext();
-  const { projectDetailUpdater } = useProjectContext();
   const userInfo = { name: name, email: email, image: image };
   useEffect(() => {
     userUpdater(userInfo);
-    projectDetailUpdater(projectInfo);
   }, []);
   return (
     <div>
       <Navbar whiteBar={true} />
       <Wrapper>
         <DashboardMenu />
-        <ProjectScreen />
+        <CommunityScreen />
       </Wrapper>
       <Footer />
     </div>
@@ -39,13 +35,11 @@ const Wrapper = styled.div`
   background-color: #fafafa;
 `;
 
-export default ProjectPage;
+export default CommunityPage;
 
 export async function getServerSideProps({ req, res }) {
   try {
     const token = getCookie("user-token", { req, res });
-    const projects = await Project.find({});
-    const projectInfo = JSON.parse(JSON.stringify(projects));
     if (token) {
       const verified = jwt.verify(token, process.env.JWT_SECRET);
       const obj = await User.findOne({ _id: verified.id });
@@ -56,12 +50,11 @@ export async function getServerSideProps({ req, res }) {
             email: obj.email,
             name: obj.username,
             image: obj.imageUrl,
-            projectInfo,
           },
         };
       }
     }
-    return { props: { projectInfo } };
+    return { props: {} };
   } catch (error) {
     return { props: {} };
   }

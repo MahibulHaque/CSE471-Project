@@ -5,18 +5,22 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useUserContext } from "../../Contexts/UserContext";
 import User from "../../models/User";
+import CommunityQuestion from "../../models/CommunityQuestion";
 import CommunityScreen from "../../components/CommunityScreen";
+import { useQuestionContext } from "../../Contexts/QuestionDetailContext";
 const Navbar = dynamic(() => import("../../components/Navbar"));
 const DashboardMenu = dynamic(() => import("../../components/DashboardMenu"), {
   ssr: false,
   loading: () => <div />,
 });
 const Footer = dynamic(() => import("../../components/Footer"));
-const CommunityPage = ({ name, email, image }) => {
+const CommunityPage = ({ name, email, image,questionDetail }) => {
   const { userUpdater } = useUserContext();
+  const { questionDetailUpdater } = useQuestionContext();
   const userInfo = { name: name, email: email, image: image };
   useEffect(() => {
     userUpdater(userInfo);
+    questionDetailUpdater(questionDetail);
   }, []);
   return (
     <div>
@@ -39,6 +43,8 @@ export default CommunityPage;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    const questionResult = await CommunityQuestion.find({});
+    const questionDetail = JSON.parse(JSON.stringify(questionResult));
     const token = getCookie("user-token", { req, res });
     if (token) {
       const verified = jwt.verify(token, process.env.JWT_SECRET);
@@ -50,11 +56,12 @@ export async function getServerSideProps({ req, res }) {
             email: obj.email,
             name: obj.username,
             image: obj.imageUrl,
+            questionDetail,
           },
         };
       }
     }
-    return { props: {} };
+    return { props: { questionDetail } };
   } catch (error) {
     return { props: {} };
   }

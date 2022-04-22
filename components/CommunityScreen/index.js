@@ -1,4 +1,6 @@
+import Link from "next/link";
 import React from "react";
+import { useQuestionContext } from "../../Contexts/QuestionDetailContext";
 import {
   Container,
   MainContainer,
@@ -11,7 +13,29 @@ import {
   TextContainer,
 } from "./CommunityScreenElements";
 
+function timeAgo(input) {
+  const date = input instanceof Date ? input : new Date(input);
+  const formatter = new Intl.RelativeTimeFormat("en");
+  const ranges = {
+    years: 3600 * 24 * 365,
+    months: 3600 * 24 * 30,
+    weeks: 3600 * 24 * 7,
+    days: 3600 * 24,
+    hours: 3600,
+    minutes: 60,
+    seconds: 1,
+  };
+  const secondsElapsed = (date.getTime() - Date.now()) / 1000;
+  for (let key in ranges) {
+    if (ranges[key] < Math.abs(secondsElapsed)) {
+      const delta = secondsElapsed / ranges[key];
+      return formatter.format(Math.round(delta), key);
+    }
+  }
+}
+
 const CommunityScreen = () => {
+  const { questionDetail } = useQuestionContext();
   return (
     <Container>
       <TextContainer>
@@ -24,60 +48,46 @@ const CommunityScreen = () => {
       <MainContainer>
         <QuestionsHeaderContainer>
           <h3>All Questions</h3>
-          <button>Ask a question</button>
+          <Link href="/community/question/ask" passHref>
+            <button>Ask a question</button>
+          </Link>
         </QuestionsHeaderContainer>
-        <QuestionsContainer>
-          <QuestionHolder>
-            <QuestionCounterHolder>
-              <p>
-                0<span>votes</span>
-              </p>
-              <p>
-                0<span>answers</span>
-              </p>
-              <p>
-                0<span>view</span>
-              </p>
-            </QuestionCounterHolder>
-            <QuestionDetailHolder>
-              <a href="#">
-                How To take amount dynamically from firebase for razorpay
-                integration in a react app
-              </a>
-              <QuestionTagHolder>
-                <span>#react</span>
-                <span>#javascript</span>
-                <span>#nodejs</span>
-                <p>asked 20 hours ago by Abdur Rahman</p>
-              </QuestionTagHolder>
-            </QuestionDetailHolder>
-          </QuestionHolder>
-          <QuestionHolder>
-            <QuestionCounterHolder>
-              <p>
-                0<span>votes</span>
-              </p>
-              <p>
-                0<span>answers</span>
-              </p>
-              <p>
-                0<span>view</span>
-              </p>
-            </QuestionCounterHolder>
-            <QuestionDetailHolder>
-              <a href="#">
-                How To take amount dynamically from firebase for razorpay
-                integration in a react app
-              </a>
-              <QuestionTagHolder>
-                <span>#react</span>
-                <span>#javascript</span>
-                <span>#nodejs</span>
-                <p>asked 20 hours ago by Abdur Rahman</p>
-              </QuestionTagHolder>
-            </QuestionDetailHolder>
-          </QuestionHolder>
-        </QuestionsContainer>
+        {questionDetail && (
+          <QuestionsContainer>
+            {questionDetail.map((question, index) => (
+              <QuestionHolder key={index}>
+                <QuestionCounterHolder>
+                  <p>
+                    {question.questionVoteCount}
+                    <span>votes</span>
+                  </p>
+                  <p>
+                    {question.questionAnswerCount}
+                    <span>answers</span>
+                  </p>
+                  <p>
+                    {question.questionViewCount}
+                    <span>view</span>
+                  </p>
+                </QuestionCounterHolder>
+                <QuestionDetailHolder>
+                  <a href={`/community/question/${question.questionId}`}>
+                    {question.questionTitle}
+                  </a>
+                  <QuestionTagHolder>
+                    {question.questionTags.map((tag, i) => (
+                      <span key={i}>{tag}</span>
+                    ))}
+                    <p>
+                      asked {timeAgo(question.questionPostTime)} by{" "}
+                      {question.questionBy}
+                    </p>
+                  </QuestionTagHolder>
+                </QuestionDetailHolder>
+              </QuestionHolder>
+            ))}
+          </QuestionsContainer>
+        )}
       </MainContainer>
     </Container>
   );

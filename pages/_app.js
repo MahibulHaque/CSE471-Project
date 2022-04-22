@@ -9,6 +9,7 @@ import CourseContextProvider from "../Contexts/CourseDetailContext";
 import PathContextProvider from "../Contexts/PathDetailContext";
 import { ToastContainer } from "react-toastify";
 import ProjectDetailContextProvider from "../Contexts/ProjectDetailContext";
+import QuestionDetailContextProvider from "../Contexts/QuestionDetailContext";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -49,7 +50,9 @@ export default function App({
             <PathContextProvider>
               <ProjectDetailContextProvider>
                 <CourseContextProvider>
-                  <Component {...pageProps} />
+                  <QuestionDetailContextProvider>
+                    <Component {...pageProps} />
+                  </QuestionDetailContextProvider>
                 </CourseContextProvider>
               </ProjectDetailContextProvider>
             </PathContextProvider>

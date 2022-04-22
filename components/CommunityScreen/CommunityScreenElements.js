@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom:4rem;
 `;
 
 export const TextContainer = styled.section`
@@ -116,7 +117,7 @@ export const QuestionDetailHolder = styled.div`
     margin-bottom: 2rem;
 
     &:hover {
-      text-decoration: underline;
+      text-decoration: underline 1px;
       text-decoration-color: black;
     }
   }

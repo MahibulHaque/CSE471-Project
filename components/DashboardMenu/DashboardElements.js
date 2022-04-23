@@ -51,17 +51,7 @@ export const MenuLink = styled.a`
     background-color: #eef2ff;
     color: #4f46e5;
     fill: #4f46e5;
-    /* border-left: 4px solid #4f46e5; */
-    &::before{
-      content:"";
-      width:5px;
-      height:100%;
-      padding-block:.75em;
-      background-color:#4f46e5;
-      position:relative;
-      top:0;
-      left:10;
-    }
+    border-left: 4px solid #4f46e5;
   }
 `;
 export const MenuButtonHolder = styled.div`

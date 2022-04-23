@@ -2,7 +2,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { FaGoogle, FaGithub } from "react-icons/fa";
 import { injectStyle } from "react-toastify/dist/inject-style";
-
+import { FaCheck } from "react-icons/fa";
 import {
   Form,
   Label,
@@ -21,6 +21,7 @@ import axios from "axios";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
 import { toast, ToastContainer } from "react-toastify";
+import { useState } from "react";
 
 if (typeof window !== "undefined") {
   injectStyle();
@@ -37,9 +38,10 @@ const Login = () => {
   });
 
   const router = useRouter();
+  const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <>
+    <div>
       <Wrapper>
         <FormHeader whiteForm={true}>
           Sign in to <span>OpenRobotics</span>
@@ -71,11 +73,10 @@ const Login = () => {
                     draggable: true,
                     onClose: function () {
                       console.log("yes");
-                      router.push("/dashboard")
+                      router.push("/dashboard");
                     },
                   });
-                }
-                else if(res.status===200){
+                } else if (res.status === 200) {
                   toast.error(`${res.data.message}`, {
                     position: "bottom-right",
                     autoClose: 2000,
@@ -156,6 +157,21 @@ const Login = () => {
                     {errors.Password}
                   </div>
                 )}
+                <ForgotPasswordWrapper>
+                  <RememberMeWrapper>
+                    <input
+                      type="checkbox"
+                      name="Remember"
+                      id="Remember"
+                      checked={rememberMe}
+                      onClick={() => {
+                        setRememberMe((prev) => !prev);
+                      }}
+                    />
+                    <label htmlFor="Remeber">Remember me</label>
+                  </RememberMeWrapper>
+                  <a href="/password-reset">Forgot your password?</a>
+                </ForgotPasswordWrapper>
                 <SubmitButton
                   type="submit"
                   disabled={isSubmitting}
@@ -215,7 +231,7 @@ const Login = () => {
           </p>
         </FormContainer>
       </Wrapper>
-    </>
+    </div>
   );
 };
 const Wrapper = styled.div`
@@ -225,5 +241,48 @@ const Wrapper = styled.div`
   align-items: center;
   background-color: #fafafa;
   padding-bottom: 7rem;
+`;
+const ForgotPasswordWrapper = styled.div`
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  font-size: 16px;
+
+  & > a {
+    color: #4f46e5;
+    cursor: pointer;
+    text-decoration: none;
+  }
+`;
+
+const RememberMeWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  & > input[type="checkbox"] {
+    cursor: pointer;
+    border: 1px solid #737373;
+    color: white;
+    border-radius: 4px;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    background-origin: border-box;
+    appearance: none;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+  }
+  & > input[type="checkbox"]:checked {
+    background-color: #4f46e5;
+    background-image:url("images/check.svg") ;
+  }
+
+  & > label {
+    color: #171717;
+  }
 `;
 export default Login;

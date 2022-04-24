@@ -163,7 +163,6 @@ const Login = () => {
                       type="checkbox"
                       name="Remember"
                       id="Remember"
-                      checked={rememberMe}
                       onClick={() => {
                         setRememberMe((prev) => !prev);
                       }}

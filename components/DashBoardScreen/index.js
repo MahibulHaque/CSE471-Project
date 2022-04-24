@@ -3,7 +3,10 @@ import { FaMoon } from "react-icons/fa";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 
 import DashboardMenu from "../DashboardMenu";
+import ChartComponent from "../ChartComponent";
 import {
+  ActivityContainer,
+  AsideContainer,
   Container,
   CourseProgressContainer,
   GoalContainer,
@@ -14,6 +17,7 @@ import {
   Levelbar,
   MainContainer,
   MainSection,
+  ParticipationContainer,
   ProgressContainer,
   ProgressHeader,
   ProgressP,
@@ -23,6 +27,7 @@ import {
 import { LinearProgress, linearProgressClasses, styled } from "@mui/material";
 import { FaArrowRight } from "react-icons/fa";
 import { useUserContext } from "../../Contexts/UserContext";
+import Image from "next/image";
 
 const DashBoardScreen = () => {
   const { user } = useUserContext();
@@ -129,6 +134,26 @@ const DashBoardScreen = () => {
             </ProgressContainer>
             <GoalContainer></GoalContainer>
           </MainSection>
+          <AsideContainer>
+            <ParticipationContainer>
+              <div className="image__holder">
+                <Image src="/images/giftbox.png" width={90} height={90} />
+              </div>
+              <div>
+                <h2>
+                  Take part in <span>#30DaysOfRobotics</span>
+                </h2>
+                <p>
+                  Learn and Practice Robotics every day and win exciting prizes!
+                </p>
+                <button>Attempt today's challenge</button>
+              </div>
+            </ParticipationContainer>
+            <ActivityContainer>
+              <h2>Activity last week</h2>
+              <ChartComponent />
+            </ActivityContainer>
+          </AsideContainer>
         </Wrapper>
       </MainContainer>
     </Container>

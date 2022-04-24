@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 250px;
+  min-width: 250px;
   min-height: calc(100vh - 60px);
   display: flex;
+  top: 0%;
+  left: 0%;
+  position: sticky;
   background-color: white;
   box-shadow: rgb(0 0 0/10%) 1px 0 1px 0px;
   flex-direction: column;

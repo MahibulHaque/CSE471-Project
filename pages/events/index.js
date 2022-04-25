@@ -1,15 +1,15 @@
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import LearningPaths from "../../components/LearningPathsScreen";
 import DashboardMenu from "../../components/DashboardMenu";
 import { useUserContext } from "../../Contexts/UserContext";
 import { getCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
 import User from "../../models/User";
+import EventScreen from "../../components/EventScreen";
 const Navbar = dynamic(() => import("../../components/Navbar"), {
   ssr: false,
-  loading: () => <div style={{ height: 60 }} />,
+  loading: () => <div style={{ height: 60, width: "100vw" }} />,
 });
 const Footer = dynamic(() => import("../../components/Footer"), {
   ssr: false,
@@ -19,7 +19,8 @@ const Footer = dynamic(() => import("../../components/Footer"), {
 const LearningPathsPage = ({ name, email, image }) => {
   const userInfo = { name: name, email: email, image: image };
   const { userUpdater } = useUserContext();
-  useEffect(() => {
+
+  useEffect(async () => {
     userUpdater(userInfo);
   }, []);
   return (
@@ -27,7 +28,7 @@ const LearningPathsPage = ({ name, email, image }) => {
       <Navbar whiteBar={true} />
       <Wrapper>
         <DashboardMenu />
-        <LearningPaths />
+        <EventScreen />
       </Wrapper>
       <Footer />
     </div>

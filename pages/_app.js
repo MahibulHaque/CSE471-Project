@@ -1,5 +1,7 @@
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { SessionProvider } from "next-auth/react";
+import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/nprogress.css";
 import nProgress from "nprogress";
 import Router from "next/router";
@@ -36,40 +38,47 @@ Router.events.on("routeChangeStart", nProgress.start);
 Router.events.on("routeChangeError", nProgress.done);
 Router.events.on("routeChangeComplete", nProgress.done);
 
+const queryClient = new QueryClient();
+
 export default function App({
   Component,
   pageProps: { session, ...pageProps },
 }) {
   return (
     <>
-      <GlobalStyle />
+      <QueryClientProvider client={queryClient}>
+        <GlobalStyle />
 
-      <ThemeProvider theme={theme}>
-        <SessionProvider session={session}>
-          <UserContextProvider>
-            <PathContextProvider>
-              <ProjectDetailContextProvider>
-                <CourseContextProvider>
-                  <QuestionDetailContextProvider>
-                    <Component {...pageProps} />
-                  </QuestionDetailContextProvider>
-                </CourseContextProvider>
-              </ProjectDetailContextProvider>
-            </PathContextProvider>
-          </UserContextProvider>
-        </SessionProvider>
-      </ThemeProvider>
-      <ToastContainer
-        position="bottom-right"
-        autoClose={2000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
+        <ThemeProvider theme={theme}>
+          <SessionProvider session={session}>
+            <UserContextProvider>
+              <PathContextProvider>
+                <ProjectDetailContextProvider>
+                  <CourseContextProvider>
+                    <QuestionDetailContextProvider>
+                      <Component {...pageProps} />
+                      <ReactQueryDevtools
+                        initialIsOpen={false}
+                      ></ReactQueryDevtools>
+                    </QuestionDetailContextProvider>
+                  </CourseContextProvider>
+                </ProjectDetailContextProvider>
+              </PathContextProvider>
+            </UserContextProvider>
+          </SessionProvider>
+        </ThemeProvider>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
+      </QueryClientProvider>
     </>
   );
 }

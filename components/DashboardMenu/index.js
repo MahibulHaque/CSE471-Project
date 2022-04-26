@@ -12,6 +12,7 @@ import {
   MdOutlineAccountTree,
   MdGroups,
   MdOutlineEmojiEvents,
+  MdDashboard
 } from "react-icons/md";
 import {
   AiOutlineProject,
@@ -73,6 +74,13 @@ const DashboardMenu = () => {
         >
           <MdGroups />
           Community
+        </MenuLink>
+        <MenuLink
+          href="/playgrounds"
+          className={`${router.asPath.includes("playgrounds") ? "active" : ""}`}
+        >
+          <MdDashboard />
+          Playgrounds
         </MenuLink>
         <MenuLink
           href="/projects"

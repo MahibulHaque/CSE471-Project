@@ -57,9 +57,6 @@ export default function App({
                   <CourseContextProvider>
                     <QuestionDetailContextProvider>
                       <Component {...pageProps} />
-                      <ReactQueryDevtools
-                        initialIsOpen={false}
-                      ></ReactQueryDevtools>
                     </QuestionDetailContextProvider>
                   </CourseContextProvider>
                 </ProjectDetailContextProvider>

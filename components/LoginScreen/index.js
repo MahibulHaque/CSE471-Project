@@ -169,7 +169,9 @@ const Login = () => {
                     />
                     <label htmlFor="Remeber">Remember me</label>
                   </RememberMeWrapper>
-                  <a href="/password-reset">Forgot your password?</a>
+                  <Link href="/password-reset">
+                    <a>Forgot your password?</a>
+                  </Link>
                 </ForgotPasswordWrapper>
                 <SubmitButton
                   type="submit"
@@ -277,7 +279,7 @@ const RememberMeWrapper = styled.div`
   }
   & > input[type="checkbox"]:checked {
     background-color: #4f46e5;
-    background-image:url("images/check.svg") ;
+    background-image: url("images/check.svg");
   }
 
   & > label {

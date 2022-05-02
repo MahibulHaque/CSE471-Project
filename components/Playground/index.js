@@ -7,25 +7,25 @@ const Playground = () => {
   return (
     <Container>
       {router.asPath.includes("playgrounds/c") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/CompetentFirstPayware?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/CompetentFirstPayware?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/python") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/MoralSingleJavadocs?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/MoralSingleJavadocs?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/c++") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/ShamefulModestAmoebas?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/ShamefulModestAmoebas?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/csharp") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/AgitatedLawngreenGroupware?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/AgitatedLawngreenGroupware?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/julia") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/RubberyIndolentLocks?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/RubberyIndolentLocks?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/nodejs") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/EverlastingPleasedMarkuplanguage?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/EverlastingPleasedMarkuplanguage?lite=true"></iframe>
       )}
       {router.asPath.includes("playgrounds/bash") && (
-        <iframe frameborder="0" width="100%" height="900px" src="https://replit.com/@alter10/NativeRapidLegacysystem?lite=true"></iframe>
+        <iframe frameBorder="0" width="100%" height="900px" src="https://replit.com/@alter10/NativeRapidLegacysystem?lite=true"></iframe>
       )}
     </Container>
   );

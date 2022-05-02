@@ -47,6 +47,7 @@ const PathDetail = ({ pathInfo }) => {
 
 export default PathDetail;
 export async function getStaticProps({ params }) {
+  await connect();
   const pathId = params.pathName;
 
   const res = await Path.findOne({ pathId: pathId });

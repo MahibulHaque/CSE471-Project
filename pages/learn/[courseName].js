@@ -46,6 +46,7 @@ const CourseDetail = ({ courseInfo }) => {
 
 export default CourseDetail;
 export async function getStaticProps({ params }) {
+  await connect();
   const courseId = params.courseName;
 
   const res = await Course.findOne({ id: courseId });

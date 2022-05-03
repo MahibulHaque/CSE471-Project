@@ -18,11 +18,12 @@ export const WrapperPrice = styled.div`
 export const PricingHeader = styled.h1`
   font-size: clamp(30px, 6vw, 50px);
   font-weight: 900;
-  width: 100%;
+  width: 90%;
   text-align: center;
   margin-bottom:.5em;
 `;
 export const PricingButtonContainer = styled.div`
+  width:90%;
   max-width: 400px;
   display: flex;
   background-color: #262626;
@@ -51,7 +52,7 @@ export const PricingPlanHolder = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
-  width: 100%;
+  width: 90%;
   justify-content: center;
 `;
 export const PricingPlanContainer = styled.div`

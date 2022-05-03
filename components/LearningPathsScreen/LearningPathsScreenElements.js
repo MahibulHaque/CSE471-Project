@@ -112,6 +112,8 @@ export const FeaturedPathCard = styled.div`
         }
       }
       & > p {
+        padding-right:20px;
+        text-align:justify;
         font-size: 14px;
         color: #525252;
       }
@@ -136,7 +138,7 @@ export const AllLearningPathContainer = styled.div`
 
 export const CardContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1rem;
 `;
 
@@ -163,7 +165,8 @@ export const Card = styled.div`
     color: #737373;
     font-size: 16px;
     margin-bottom: 1rem;
-    padding-left: 20px;
+    text-align:justify;
+    padding-inline: 20px;
   }
   & > div {
     padding-inline: 20px;

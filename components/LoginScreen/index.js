@@ -246,12 +246,13 @@ const Wrapper = styled.div`
 const ForgotPasswordWrapper = styled.div`
   margin-top: 1.5rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  align-items: center;
   font-size: 16px;
 
   & > a {
+    text-align:right;
     color: #4f46e5;
     cursor: pointer;
     text-decoration: none;

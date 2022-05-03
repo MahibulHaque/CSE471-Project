@@ -20,6 +20,7 @@ export const TextContainer = styled.section`
     font-size: clamp(40px, 5vw, 50px);
     color: black;
     margin-bottom: 1rem;
+    text-align:center;
     font-weight: 900;
   }
 

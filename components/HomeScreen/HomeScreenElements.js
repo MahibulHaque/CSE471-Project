@@ -4,7 +4,7 @@ export const Container = styled.div`
   width: 100%;
   max-width: ${({ whiteForm }) => (whiteForm ? "" : "1400px")};
   display: ${({ whiteForm }) => (whiteForm ? "flex" : "grid")};
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -15,7 +15,7 @@ export const Container = styled.div`
 export const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 90%;
   max-width: 400px;
 `;
 export const HomeHeaderTag = styled.h1`
@@ -31,6 +31,9 @@ export const HomeHeaderTag = styled.h1`
     -moz-background-clip: text;
     -webkit-text-fill-color: transparent;
     -moz-text-fill-color: transparent;
+  }
+  @media screen and (max-width:648px){
+    text-align:center;
   }
 `;
 export const HomeSubTag = styled.p`
@@ -54,7 +57,8 @@ export const HomeExploreButton = styled.button`
   cursor: pointer;
 `;
 export const FormContainer = styled.div`
-  width: clamp(350px, 450px, 500px);
+  width:90%;
+  max-width:400px;
   border: 2px solid;
   border-color: ${({ whiteForm }) => (whiteForm ? "white" : "#262626")};
   border-radius: 0.25em;

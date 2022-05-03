@@ -5,11 +5,11 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  background-color: #f5f5f5;
 `;
 
 export const WrapperPrice = styled.div`
-  width: 100%;
-  background-color: #f5f5f5;
+  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,12 +18,12 @@ export const WrapperPrice = styled.div`
 export const PricingHeader = styled.h1`
   font-size: clamp(30px, 6vw, 50px);
   font-weight: 900;
-  width: 90%;
+  width: 100%;
   text-align: center;
   margin-bottom:.5em;
 `;
 export const PricingButtonContainer = styled.div`
-  width:90%;
+  width:100%;
   max-width: 400px;
   display: flex;
   background-color: #262626;
@@ -31,13 +31,14 @@ export const PricingButtonContainer = styled.div`
   padding-inline: 3px;
   border-radius: 5px;
   margin-bottom: 2.5em;
+  justify-content:space-between;
 `;
 export const PricingButton = styled.button`
   border: none;
   outline: none;
   background-color: #262626;
   font-size: 14px;
-  padding-inline: 2em;
+  flex-grow:1;
   text-align: center;
   padding-block: 0.5em;
   border-radius: 6px;
@@ -52,7 +53,7 @@ export const PricingPlanHolder = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
-  width: 90%;
+  width: 100%;
   justify-content: center;
 `;
 export const PricingPlanContainer = styled.div`

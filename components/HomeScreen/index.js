@@ -55,7 +55,7 @@ const HomeScreen = () => {
         </TextContainer>
         {user?.name ? (
           <HeroImageHolder>
-            <Image src="/images/Avation.png" width={753} height={450} />
+            <Image src="/images/Avation.webp" width={753} height={450} />
           </HeroImageHolder>
         ) : (
           <FormContainer>

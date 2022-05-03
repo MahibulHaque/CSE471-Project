@@ -8,6 +8,7 @@ import { useUserContext } from "../../Contexts/UserContext";
 import Project from "../../models/Project";
 import ProjectScreen from "../../components/ProjectScreen";
 import User from "../../models/User";
+import connect from "../../lib/database";
 const Navbar = dynamic(() => import("../../components/Navbar"));
 const DashboardMenu = dynamic(() => import("../../components/DashboardMenu"), {
   ssr: false,
@@ -43,6 +44,7 @@ export default ProjectPage;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await connect();
     const token = getCookie("user-token", { req, res });
     const projects = await Project.find({});
     const projectInfo = JSON.parse(JSON.stringify(projects));

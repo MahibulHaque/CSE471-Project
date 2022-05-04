@@ -3,8 +3,6 @@ import { SessionProvider } from "next-auth/react";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { QueryClient, QueryClientProvider } from "react-query";
 import "../styles/nprogress.css";
-import nProgress from "nprogress";
-import Router from "next/router";
 import "../styles/globals.css";
 import UserContextProvider from "../Contexts/UserContext";
 import CourseContextProvider from "../Contexts/CourseDetailContext";
@@ -12,6 +10,14 @@ import PathContextProvider from "../Contexts/PathDetailContext";
 import { ToastContainer } from "react-toastify";
 import ProjectDetailContextProvider from "../Contexts/ProjectDetailContext";
 import QuestionDetailContextProvider from "../Contexts/QuestionDetailContext";
+import dynamic from "next/dynamic";
+
+const TopProgressBar = dynamic(
+  () => {
+    return import("../components/TopProgressbar");
+  },
+  { ssr: false }
+);
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -34,9 +40,6 @@ const theme = {
   },
 };
 
-Router.events.on("routeChangeStart", nProgress.start);
-Router.events.on("routeChangeError", nProgress.done);
-Router.events.on("routeChangeComplete", nProgress.done);
 
 const queryClient = new QueryClient();
 
@@ -56,6 +59,7 @@ export default function App({
                 <ProjectDetailContextProvider>
                   <CourseContextProvider>
                     <QuestionDetailContextProvider>
+                      <TopProgressBar />
                       <Component {...pageProps} />
                     </QuestionDetailContextProvider>
                   </CourseContextProvider>

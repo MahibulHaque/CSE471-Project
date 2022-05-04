@@ -54,6 +54,6 @@ window.fetch = async function (...args) {
   }
 };
 
-export default function TopProgreesBar() {
+export default function () {
   return null;
 }

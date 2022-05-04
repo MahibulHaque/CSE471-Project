@@ -8,13 +8,14 @@ import User from "../../models/User";
 import CommunityQuestion from "../../models/CommunityQuestion";
 import CommunityScreen from "../../components/CommunityScreen";
 import { useQuestionContext } from "../../Contexts/QuestionDetailContext";
+import connect from "../../lib/database";
 const Navbar = dynamic(() => import("../../components/Navbar"));
 const DashboardMenu = dynamic(() => import("../../components/DashboardMenu"), {
   ssr: false,
   loading: () => <div />,
 });
 const Footer = dynamic(() => import("../../components/Footer"));
-const CommunityPage = ({ name, email, image,questionDetail }) => {
+const CommunityPage = ({ name, email, image, questionDetail }) => {
   const { userUpdater } = useUserContext();
   const { questionDetailUpdater } = useQuestionContext();
   const userInfo = { name: name, email: email, image: image };
@@ -43,6 +44,7 @@ export default CommunityPage;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await connect();
     const questionResult = await CommunityQuestion.find({});
     const questionDetail = JSON.parse(JSON.stringify(questionResult));
     const token = getCookie("user-token", { req, res });

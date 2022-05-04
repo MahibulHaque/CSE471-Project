@@ -10,6 +10,7 @@ import HomeScreen from "../components/HomeScreen";
 import Navbar from "../components/Navbar";
 import { useEffect } from "react";
 import { useUserContext } from "../Contexts/UserContext";
+import connect from "../lib/database"
 
 const PromoHomeScreen = dynamic(() => import("../components/PromoHomeScreen"), {
   ssr: false,
@@ -56,6 +57,7 @@ const Main = styled.main`
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await connect();
     const token = getCookie("user-token", { req, res });
     if (token) {
       const verified = jwt.verify(token, process.env.JWT_SECRET);

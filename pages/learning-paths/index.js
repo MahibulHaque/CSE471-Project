@@ -7,6 +7,7 @@ import { useUserContext } from "../../Contexts/UserContext";
 import { getCookie } from "cookies-next";
 import jwt from "jsonwebtoken";
 import User from "../../models/User";
+import connect from "../../lib/database";
 const Navbar = dynamic(() => import("../../components/Navbar"), {
   ssr: false,
   loading: () => <div style={{ height: 60 }} />,
@@ -42,6 +43,7 @@ const Wrapper = styled.div`
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await connect();
     const token = getCookie("user-token", { req, res });
     if (token) {
       const verified = jwt.verify(token, process.env.JWT_SECRET);

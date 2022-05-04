@@ -1,4 +1,5 @@
 import { getCookie } from "cookies-next";
+import { connect } from "formik";
 import jwt from "jsonwebtoken";
 import dynamic from "next/dynamic";
 import React, { useEffect } from "react";
@@ -39,6 +40,7 @@ export default AskPage;
 
 export async function getServerSideProps({ req, res }) {
   try {
+    await connect();
     const token = getCookie("user-token", { req, res });
     if (token) {
       const verified = jwt.verify(token, process.env.JWT_SECRET);

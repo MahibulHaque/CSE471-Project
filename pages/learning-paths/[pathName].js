@@ -26,7 +26,7 @@ const PathDetail = ({ pathInfo }) => {
   const { pathDetailUpdater } = usePathContext();
   const { userUpdater } = useUserContext();
   const { data, error } = useSWR(
-    `http://localhost:3000/api/auth/user/user-auth`,
+    `/api/auth/user/user-auth`,
     fetcher
   );
   if (data) {

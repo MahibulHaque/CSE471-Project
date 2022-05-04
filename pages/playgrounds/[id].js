@@ -23,7 +23,7 @@ const fetcher = (...args) => fetch(...args).then((response) => response.json());
 const PlaygroundDetail = ({ pathInfo }) => {
   const { userUpdater } = useUserContext();
   const { data, error } = useSWR(
-    `http://localhost:3000/api/auth/user/user-auth`,
+    `/api/auth/user/user-auth`,
     fetcher
   );
   if (data) {

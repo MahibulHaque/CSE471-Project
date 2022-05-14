@@ -1,11 +1,7 @@
+## Live Website: https://open-robotics.vercel.app
+
 <div>
-  <summary>Website snapshots</summary>
-  <details width="100%">
-    <img src="https://raw.githubusercontent.com/MahibulHaque/CSE471-Project/main/public/images/home.png" name="Home page">
-    <img src="https://raw.githubusercontent.com/MahibulHaque/CSE471-Project/main/public/images/loggedHome.png" name="Logged in Home Screen">
-    <img src="https://raw.githubusercontent.com/MahibulHaque/CSE471-Project/main/public/images/dashboard.png" name="Dashboard">
-    <img src="https://raw.githubusercontent.com/MahibulHaque/CSE471-Project/main/public/images/learning-path.png" name="Learning Path">
-  </details>
+    <img src="https://raw.githubusercontent.com/MahibulHaque/CSE471-Project/main/public/images/Open robotics hero_image.webp" name="Home page">
 </div>
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
